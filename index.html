@@ -172,6 +172,39 @@
             border-radius: 15px; /* 부모 컨테이너의 둥근 모서리 유지 */
         }
 
+        /* Back to Top button styles */
+        #backToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #3b82f6; /* Blue-600 */
+            color: white;
+            padding: 12px 18px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            opacity: 0;
+            pointer-events: none; /* Initially disable pointer events */
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+        }
+        #backToTopBtn.show {
+            opacity: 1;
+            pointer-events: auto; /* Enable pointer events when visible */
+            transform: translateY(0);
+        }
+        #backToTopBtn:hover {
+            background-color: #2563eb; /* Blue-700 */
+            transform: scale(1.1);
+        }
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero {
@@ -218,6 +251,14 @@
             }
             .map-placeholder {
                 height: 300px; /* Adjust height for smaller screens */
+            }
+            #backToTopBtn {
+                bottom: 15px;
+                right: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
+                padding: 10px;
             }
         }
     </style>
@@ -342,7 +383,7 @@
                                 <p class="font-semibold text-gray-800">🏛️ 특강 II: 고고학이 바라본 도서관의 역사, 그리고 지식의 미래</p>
                                 <em class="text-gray-600">- 경희대학교 사학과 강인욱 교수 / 도서관장</em>
                                 <p class="mt-2 font-semibold text-gray-800">🌿 신기술동향 III: 도서관 실내환경과 개선방안</p>
-                                <em class="text-gray-600">- ㈜크린바이오 대표이사 김해중</em>
+                                <em class="text-600">- ㈜크린바이오 대표이사 김해중</em>
                             </div>
                         </div>
                         <div class="schedule-item">
@@ -601,6 +642,9 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <a href="#" id="backToTopBtn">TOP</a>
+
     <script>
         // 스크롤 애니메이션 (데스크톱에서만) - Tailwind CSS를 사용하여 애니메이션 대체 가능
         if (window.innerWidth > 768) {
@@ -623,6 +667,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.course-tab');
             const contents = document.querySelectorAll('.course-content');
+            const backToTopBtn = document.getElementById('backToTopBtn');
 
             // 초기 로드 시 첫 번째 탭 활성화 (이미 active 클래스가 있으나, 안전을 위해)
             const initialActiveTab = document.querySelector('.course-tab.active');
@@ -632,7 +677,6 @@
                     document.getElementById(`course-${tabs[0].getAttribute('data-course')}`).classList.add('active');
                 }
             }
-
 
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
@@ -649,6 +693,23 @@
 
                     // 스크롤 이동
                     targetContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // Back to Top button logic
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 200) { // Show button after scrolling 200px
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default anchor behavior
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth' // Smooth scroll to top
                 });
             });
         });
