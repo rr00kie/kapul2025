@@ -388,7 +388,7 @@
     </section>
 
     <!-- 네트워킹 코스 -->
-    <section class="py-16 bg-blue-700 text-white">
+    <section class="py-16 bg-blue-700 text-white" id="networking-course-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center text-white">
                 <span class="relative inline-block">
@@ -621,6 +621,7 @@
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const course = this.getAttribute('data-course');
+                    const targetContent = document.getElementById(`course-${course}`);
 
                     // 모든 탭 비활성화
                     tabs.forEach(t => t.classList.remove('active'));
@@ -628,7 +629,10 @@
 
                     // 선택된 탭 활성화
                     this.classList.add('active');
-                    document.getElementById(`course-${course}`).classList.add('active');
+                    targetContent.classList.add('active');
+
+                    // 스크롤 이동
+                    targetContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 });
             });
         });
