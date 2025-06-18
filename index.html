@@ -131,11 +131,17 @@
             font-weight: 600;
             color: #2c3e50;
         }
+        /* New styles for improved readability in comparison table */
+        .comparison-table tr:nth-child(odd) td {
+            background-color: #fcfdfe; /* Very light background for odd rows */
+            color: #333; /* Darker text for better contrast */
+        }
+        .comparison-table tr:nth-child(even) td {
+            background-color: #e2e8f0; /* Light gray for even rows */
+            color: #222; /* Even darker text for contrast */
+        }
         .comparison-table tr:last-child td {
             border-bottom: none;
-        }
-        .comparison-table tr:nth-child(even) {
-            background-color: #fbfdfe; /* Lighter shade */
         }
         .comparison-table td:first-child {
             font-weight: 500;
@@ -412,38 +418,38 @@
                         <p class="text-lg text-blue-100">제주 서쪽의 아름다운 자연경관과 독특한 문화를 체험합니다.</p>
                     </div>
                     <div class="attraction-grid grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="attraction-card p-6 bg-white bg-opacity-10 text-white rounded-xl shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                        <div class="attraction-card p-6 bg-white text-gray-800 rounded-xl shadow-lg border border-gray-200">
                             <div class="attraction-image text-center text-6xl mb-4">🏞️</div>
-                            <h4 class="text-2xl font-bold text-yellow-300 mb-3 text-center">환상숲 곶자왈 & 족욕체험</h4>
-                            <p class="text-center text-opacity-90">
+                            <h4 class="text-2xl font-bold text-yellow-600 mb-3 text-center">환상숲 곶자왈 & 족욕체험</h4>
+                            <p class="text-gray-700 text-center">
                                 제주의 독특한 생태계를 간직한 곶자왈 숲에서 해설사와 함께 트레킹하며 식물들의 사연을 알아갑니다.
                                 시원한 원시림 속 힐링 족욕체험으로 워크숍의 피로를 풀어보세요.
                             </p>
-                            <div class="feature-list mt-5 text-gray-200">
-                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 주요 활동: 숲 트레킹, 족욕체험, 숲 해설</p>
-                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 특징: 여름에도 시원한 원시림, 부담 없는 산책길</p>
-                                <p class="flex items-center"><span class="text-yellow-300 mr-2">✔️</span> 준비물: 여분의 양말 (족욕 후)</p>
+                            <div class="feature-list mt-5 text-gray-700">
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 주요 활동: 숲 트레킹, 족욕체험, 숲 해설</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 특징: 여름에도 시원한 원시림, 부담 없는 산책길</p>
+                                <p class="flex items-center"><span class="text-blue-500 mr-2">✔️</span> 준비물: 여분의 양말 (족욕 후)</p>
                             </div>
-                            <div class="tip-box bg-blue-800 bg-opacity-50 border border-blue-600 text-sm p-4 rounded-lg mt-5">
-                                <p class="font-semibold text-yellow-200 mb-1">💡 팁:</p>
-                                <p class="text-blue-100">따뜻한 차와 함께하는 족욕으로 몸과 마음을 편안하게 만드세요!</p>
+                            <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
+                                <p class="text-blue-600">따뜻한 차와 함께하는 족욕으로 몸과 마음을 편안하게 만드세요!</p>
                             </div>
                         </div>
-                        <div class="attraction-card p-6 bg-white bg-opacity-10 text-white rounded-xl shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                        <div class="attraction-card p-6 bg-white text-gray-800 rounded-xl shadow-lg border border-gray-200">
                             <div class="attraction-image text-center text-6xl mb-4">🎬</div>
-                            <h4 class="text-2xl font-bold text-yellow-300 mb-3 text-center">노형수퍼마켙 관광</h4>
-                            <p class="text-center text-opacity-90">
+                            <h4 class="text-2xl font-bold text-yellow-600 mb-3 text-center">노형수퍼마켙 관광</h4>
+                            <p class="text-gray-700 text-center">
                                 옛 극장을 개조한 미디어아트 전시관으로, 원형극장 전체를 스크린으로 활용하는 독특한 공간입니다.
                                 내부에 카페가 있어 커피 한 잔과 함께 몰입감 있는 미디어아트를 감상할 수 있습니다.
                             </p>
-                            <div class="feature-list mt-5 text-gray-200">
-                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 관람 형식: 원형극장 미디어아트</p>
-                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 편의시설: 내부 카페</p>
-                                <p class="flex items-center"><span class="text-yellow-300 mr-2">✔️</span> 위치: 공항에서 멀지 않은 노형동</p>
+                            <div class="feature-list mt-5 text-gray-700">
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 관람 형식: 원형극장 미디어아트</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 편의시설: 내부 카페</p>
+                                <p class="flex items-center"><span class="text-blue-500 mr-2">✔️</span> 위치: 공항에서 멀지 않은 노형동</p>
                             </div>
-                            <div class="tip-box bg-blue-800 bg-opacity-50 border border-blue-600 text-sm p-4 rounded-lg mt-5">
-                                <p class="font-semibold text-yellow-200 mb-1">💡 팁:</p>
-                                <p class="text-blue-100">컬러풀한 옷을 입으면 더 예쁜 사진을 남길 수 있습니다!</p>
+                            <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
+                                <p class="text-blue-600">컬러풀한 옷을 입으면 더 예쁜 사진을 남길 수 있습니다!</p>
                             </div>
                         </div>
                     </div>
@@ -455,38 +461,38 @@
                         <p class="text-lg text-blue-100">제주 동쪽의 유구한 역사와 아름다운 자연을 탐험합니다.</p>
                     </div>
                     <div class="attraction-grid grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <div class="attraction-card p-6 bg-white bg-opacity-10 text-white rounded-xl shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                        <div class="attraction-card p-6 bg-white text-gray-800 rounded-xl shadow-lg border border-gray-200">
                             <div class="attraction-image text-center text-6xl mb-4">🗿</div>
-                            <h4 class="text-2xl font-bold text-yellow-300 mb-3 text-center">제주 돌문화공원</h4>
-                            <p class="text-center text-opacity-90">
+                            <h4 class="text-2xl font-bold text-yellow-600 mb-3 text-center">제주 돌문화공원</h4>
+                            <p class="text-gray-700 text-center">
                                 설문대할망 신화를 테마로 제주의 자연과 예술을 감상할 수 있는 지질 박물관 및 공원입니다.
                                 거대한 석상, 화산암석 전시, 미술 갤러리 등 실내외 다양한 볼거리가 있습니다.
                             </p>
-                            <div class="feature-list mt-5 text-gray-200">
-                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 주요 전시: 제주형성전시관, 수석전시관, 돌갤러리, 오백장군갤러리</p>
-                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 포토스팟: '하늘연못' (물 위를 걷는 듯한 사진 연출)</p>
-                                <p class="flex items-center"><span class="text-yellow-300 mr-2">✔️</span> 편의시설: 양산 비치, 전동차 운행</p>
+                            <div class="feature-list mt-5 text-gray-700">
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 주요 전시: 제주형성전시관, 수석전시관, 돌갤러리, 오백장군갤러리</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 포토스팟: '하늘연못' (물 위를 걷는 듯한 사진 연출)</p>
+                                <p class="flex items-center"><span class="text-blue-500 mr-2">✔️</span> 편의시설: 양산 비치, 전동차 운행</p>
                             </div>
-                            <div class="tip-box bg-blue-800 bg-opacity-50 border border-blue-600 text-sm p-4 rounded-lg mt-5">
-                                <p class="font-semibold text-yellow-200 mb-1">💡 팁:</p>
-                                <p class="text-blue-100">설문대할망 설화를 미리 찾아보면 더욱 재미있게 즐길 수 있습니다!</p>
+                            <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
+                                <p class="text-blue-600">설문대할망 설화를 미리 찾아보면 더욱 재미있게 즐길 수 있습니다!</p>
                             </div>
                         </div>
-                        <div class="attraction-card p-6 bg-white bg-opacity-10 text-white rounded-xl shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                        <div class="attraction-card p-6 bg-white text-gray-800 rounded-xl shadow-lg border border-gray-200">
                             <div class="attraction-image text-center text-6xl mb-4">🏖️</div>
-                            <h4 class="text-2xl font-bold text-yellow-300 mb-3 text-center">함덕해수욕장 & 서우봉</h4>
-                            <p class="text-center text-opacity-90">
+                            <h4 class="text-2xl font-bold text-yellow-600 mb-3 text-center">함덕해수욕장 & 서우봉</h4>
+                            <p class="text-gray-700 text-center">
                                 에메랄드빛 바다와 야자수가 이국적인 함덕해수욕장에서 해변 산책과 소품샵 구경을 즐기고,
                                 오션뷰 카페에서 휴식을 취해보세요. 서우봉 둘레길에서는 바다 전경을 한눈에 담을 수 있습니다.
                             </p>
-                            <div class="feature-list mt-5 text-gray-200">
-                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 주요 활동: 해변 산책, 카페 휴식, 서우봉 트레킹</p>
-                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 특징: 제주 올레 19코스 포함, 7월 해바라기 개화</p>
-                                <p class="flex items-center"><span class="text-yellow-300 mr-2">✔️</span> 미식/쇼핑: 소품샵, 오션뷰 카페</p>
+                            <div class="feature-list mt-5 text-gray-700">
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 주요 활동: 해변 산책, 카페 휴식, 서우봉 트레킹</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 특징: 제주 올레 19코스 포함, 7월 해바라기 개화</p>
+                                <p class="flex items-center"><span class="text-blue-500 mr-2">✔️</span> 미식/쇼핑: 소품샵, 오션뷰 카페</p>
                             </div>
-                            <div class="tip-box bg-blue-800 bg-opacity-50 border border-blue-600 text-sm p-4 rounded-lg mt-5">
-                                <p class="font-semibold text-yellow-200 mb-1">💡 팁:</p>
-                                <p class="text-blue-100">함덕해변 안쪽에는 예쁜 소품샵들이 많으니 둘러보세요!</p>
+                            <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
+                                <p class="text-blue-600">함덕해변 안쪽에는 예쁜 소품샵들이 많으니 둘러보세요!</p>
                             </div>
                         </div>
                     </div>
@@ -521,12 +527,12 @@
                         </tr>
                     </tbody>
                 </table>
-                <div class="booking-notice bg-white bg-opacity-10 p-8 rounded-xl text-center mt-10 shadow-lg border border-white border-opacity-20 backdrop-blur-md">
-                    <h3 class="text-2xl font-bold text-yellow-300 mb-4">📢 코스 선택 및 안내</h3>
-                    <p class="text-lg text-white mb-3">
-                        참가신청 시 <strong class="text-yellow-300">희망하는 네트워킹 코스를 선택</strong>해 주세요.
+                <div class="booking-notice bg-white p-8 rounded-xl text-center mt-10 shadow-lg">
+                    <h3 class="text-2xl font-bold text-yellow-600 mb-4">📢 코스 선택 및 안내</h3>
+                    <p class="text-gray-800 text-lg mb-3">
+                        참가신청 시 <strong class="text-blue-600">희망하는 네트워킹 코스를 선택</strong>해 주세요.
                     </p>
-                    <p class="text-md text-white opacity-90">
+                    <p class="text-gray-700 text-md">
                         신청이 저조한 코스는 폐지될 수 있습니다. 자세한 내용은 신청 시 안내될 예정입니다.
                     </p>
                 </div>
