@@ -158,11 +158,18 @@
             font-size: 1.2rem;
             font-weight: 600;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden; /* Ensure the image respects border-radius */
         }
         .contact-info .icon {
             color: #60a5fa; /* Tailwind blue-400 */
             font-size: 1.8rem;
             margin-right: 15px;
+        }
+        .map-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 이미지가 잘리지 않고 채워지도록 설정 */
+            border-radius: 15px; /* 부모 컨테이너의 둥근 모서리 유지 */
         }
 
         /* Responsive adjustments */
@@ -266,6 +273,12 @@
                             <div class="schedule-time">13:30-14:00</div>
                             <div class="schedule-content">📝 등록</div>
                         </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="register">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
+                        </div>
                         <div class="schedule-item">
                             <div class="schedule-time">14:00-14:20</div>
                             <div class="schedule-content">
@@ -273,7 +286,14 @@
                                 <em class="text-gray-600">- 인사말: 포항공과대학교 이윤태 회장</em>
                                 <em class="text-gray-600">- 축사: 한국도서관협회 곽승진 회장</em>
                                 <em class="text-gray-600">- 격려사: 한국대학도서관연합회 장우권 회장</em>
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
                             </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="opening_ceremony">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">14:20-16:00</div>
@@ -282,11 +302,27 @@
                                 <em class="text-gray-600">- 포항공과대학교 인공지능대학원장 서영주</em>
                                 <p class="mt-2 font-semibold text-gray-800">📊 이슈 I: 대학도서관 현황 분석 및 전략</p>
                                 <em class="text-gray-600">- 동국대 미래융합교육원 대우교수 정재영</em>
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
                             </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="lecture1_issue1">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">16:00-16:30</div>
-                            <div class="schedule-content">☕ 사진촬영 / Coffee Break / 전시부스 관람</div>
+                            <div class="schedule-content">
+                                ☕ 사진촬영 / Coffee Break / 전시부스 관람
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="break1">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">16:30-18:10</div>
@@ -297,15 +333,40 @@
                                 <em class="text-gray-600">- 주 아이네크 여재구 차장</em>
                                 <p class="mt-2 font-semibold text-gray-800">📈 사례발표 II: 데이터 리터러시 역량 강화를 위한 '숭실(SSU)데이터톤' 운영사례</p>
                                 <em class="text-gray-600">- 숭실대학교 중앙도서관 최현진 사서</em>
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
                             </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="case_new_tech_data">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">18:10-18:40</div>
-                            <div class="schedule-content">☕ Coffee Break / 전시부스 관람 / 체크인</div>
+                            <div class="schedule-content">
+                                ☕ Coffee Break / 전시부스 관람 / 체크인
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="break2">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">18:40-21:00</div>
-                            <div class="schedule-content">🍽️ 만찬</div>
+                            <div class="schedule-content">
+                                🍽️ 만찬
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="dinner1">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                     </div>
                 </div>
@@ -320,11 +381,27 @@
                                 <em class="text-gray-600">- &lt;제15회 사대도협 논문, 우수사례 및 혁신 아이디어 공모 '우수사례' 당선작 발표&gt; 영남대학교 중앙도서관 문정순 팀장</em>
                                 <p class="mt-2 font-semibold text-gray-800">💾 신기술동향 II: 데이터의 서재 : 도서관을 통한 공공데이터 스마트 AI검색 플랫폼</p>
                                 <em class="text-gray-600">- ㈜리버트리 대표 유제승</em>
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
                             </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="paper_new_tech2">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">10:40-11:10</div>
-                            <div class="schedule-content">☕ Coffee Break / 전시부스 관람 및 부스 이벤트</div>
+                            <div class="schedule-content">
+                                ☕ Coffee Break / 전시부스 관람 및 부스 이벤트
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="break3">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">11:10-12:40</div>
@@ -333,11 +410,27 @@
                                 <em class="text-gray-600">- 경희대학교 사학과 강인욱 교수 / 도서관장</em>
                                 <p class="mt-2 font-semibold text-gray-800">🌿 신기술동향 III: 도서관 실내환경과 개선방안</p>
                                 <em class="text-gray-600">- ㈜크린바이오 대표이사 김해중</em>
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
                             </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="lecture2_new_tech3">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">12:40-14:00</div>
-                            <div class="schedule-content">🍝 점심 식사</div>
+                            <div class="schedule-content">
+                                🍝 점심 식사
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="lunch">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">14:00-15:20</div>
@@ -346,11 +439,27 @@
                                 <em class="text-gray-600">- 스테판 토체프, MDPI CEO</em>
                                 <p class="mt-2 font-semibold text-gray-800">✨ 신기술동향 IV: Inside MDPI: Our Journey, Editorial Practices & Global Collaboration</p>
                                 <em class="text-gray-600">- 줄리아 스테페넬리, MDPI 과학전문위원회 총괄팀장</em>
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
                             </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="issue2_new_tech4">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">15:20-15:50</div>
-                            <div class="schedule-content">☕ Coffee Break / 전시 부스 관람</div>
+                            <div class="schedule-content">
+                                ☕ Coffee Break / 전시 부스 관람
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="break4">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">15:50-17:50</div>
@@ -363,15 +472,40 @@
                                 <em class="text-gray-600">- Peng Guo, De Gruyter Brill Senior Sales Manager</em>
                                 <p class="mt-2 font-semibold text-gray-800">🔄 사례발표 IV: 대학도서관 리모델링과 장서 폐기: 공간 확보를 위한 선택과 조정</p>
                                 <em class="text-gray-600">- 울산대학교 중앙도서관 김초롱 부장</em>
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
                             </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="case3_new_tech5_6_case4">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">17:50-18:10</div>
-                            <div class="schedule-content">😴 휴식</div>
+                            <div class="schedule-content">
+                                😴 휴식
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="rest">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">18:10-21:00</div>
-                            <div class="schedule-content">🥳 만찬</div>
+                            <div class="schedule-content">
+                                🥳 만찬
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="dinner2">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                     </div>
                 </div>
@@ -381,11 +515,29 @@
                     <div class="p-5">
                         <div class="schedule-item">
                             <div class="schedule-time">09:00-09:30</div>
-                            <div class="schedule-content">🎤 주제 토론과 총평</div>
+                            <div class="schedule-content">
+                                🎤 주제 토론과 총평
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="discussion">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">09:30-09:40</div>
-                            <div class="schedule-content">🎁 폐회식</div>
+                            <div class="schedule-content">
+                                🎁 폐회식
+                                <button class="llm-toggle-button text-blue-500 hover:text-blue-700 text-sm mt-2">✨ 요약 & 질문</button>
+                            </div>
+                        </div>
+                        <div class="llm-interaction-section hidden bg-gray-100 p-4 rounded-md mt-2" data-session-id="closing_ceremony">
+                            <textarea class="llm-input w-full p-2 border rounded-md mb-2 text-gray-700" rows="3" placeholder="이 세션에 대해 궁금한 점을 질문하거나 '요약'이라고 입력하여 요약을 요청하세요."></textarea>
+                            <button class="llm-ask-button bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md text-sm">질문하기</button>
+                            <div class="llm-loading text-gray-500 text-sm mt-2 hidden">답변 생성 중...</div>
+                            <div class="llm-response mt-3 p-3 bg-white rounded-md border border-gray-200 text-gray-800 text-sm"></div>
                         </div>
                     </div>
                 </div>
@@ -403,7 +555,7 @@
                 </span>
             </h2>
             <p class="text-center text-lg mb-8 max-w-2xl mx-auto opacity-90">
-                7월 4일(금)에는 참가자분들의 관심사에 따라 <strong class="text-yellow-300">네트워킹 코스를 선택</strong>하여 참여하실 수 있습니다. (워크숍 오후 세션과 중복되지 않으며, 별도의 일정으로 진행됩니다.)
+                7월 3일(목)에는 참가자분들의 관심사에 따라 <strong class="text-yellow-300">네트워킹 코스를 선택</strong>하여 참여하실 수 있습니다. (워크숍 오후 세션과 중복되지 않으며, 별도의 일정으로 진행됩니다.)
             </p>
 
             <div class="course-selector">
@@ -545,7 +697,7 @@
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">📍 오시는 길</h2>
             <div class="map-placeholder h-96 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-lg shadow-lg">
-                [호텔 위치 지도 이미지 삽입 예정]
+                <img src="kapul2025map.jpg" alt="제주도 워크숍 지도" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Map+Image+Not+Found';" />
             </div>
             <p class="text-center text-gray-600 mt-6 text-lg">
                 서귀포 KAL호텔은 제주 국제공항에서 차량으로 약 50분 거리에 위치하고 있습니다. <br>
@@ -592,6 +744,28 @@
     </footer>
 
     <script>
+        // 세션 콘텐츠 데이터 (LLM에 전달될 정보)
+        const sessionContent = {
+            "register": "워크숍 등록에 대한 정보입니다. 등록 시간은 13:30-14:00입니다.",
+            "opening_ceremony": "개회식에 대한 정보입니다. 14:00-14:20에 진행되며, 포항공과대학교 이윤태 회장, 한국도서관협회 곽승진 회장, 한국대학도서관연합회 장우권 회장의 인사말, 축사, 격려사가 있습니다.",
+            "lecture1_issue1": "특강 I과 이슈 I에 대한 정보입니다. 특강 I은 '생성형 AI 기술 동향 및 AI시대에서의 적응 방안'으로 포항공과대학교 인공지능대학원장 서영주 교수님이 강연합니다. 이슈 I은 '대학도서관 현황 분석 및 전략'으로 동국대 미래융합교육원 대우교수 정재영님이 발표합니다. 시간은 14:20-16:00입니다.",
+            "break1": "16:00-16:30에 사진촬영, Coffee Break, 전시부스 관람이 있습니다.",
+            "case_new_tech_data": "사례발표 I, 신기술동향 I, 사례발표 II에 대한 정보입니다. 사례발표 I은 연세대학교의 '성과관리체계 구축 + AI활용 사례'로 연세대학교 기획실 성과분석팀 이경민 팀장님이 발표합니다. 신기술동향 I은 '사용자 기반 지능형 통합학술정보플랫폼 소개'로 주 아이네크 여재구 차장님이 발표합니다. 사례발표 II는 '데이터 리터러시 역량 강화를 위한 '숭실(SSU)데이터톤' 운영사례'로 숭실대학교 중앙도서관 최현진 사서님이 발표합니다. 시간은 16:30-18:10입니다.",
+            "break2": "18:10-18:40에 Coffee Break, 전시부스 관람, 체크인이 있습니다.",
+            "dinner1": "18:40-21:00에 만찬이 있습니다.",
+            "paper_new_tech2": "우수논문과 신기술동향 II에 대한 정보입니다. 우수논문은 'K-첨단분야 디지털 컬렉션 구축'으로 영남대학교 중앙도서관 문정순 팀장님이 발표합니다. 신기술동향 II는 '데이터의 서재 : 도서관을 통한 공공데이터 스마트 AI검색 플랫폼'으로 ㈜리버트리 대표 유제승님이 발표합니다. 시간은 09:30-10:40입니다.",
+            "break3": "10:40-11:10에 Coffee Break, 전시부스 관람 및 부스 이벤트가 있습니다.",
+            "lecture2_new_tech3": "특강 II와 신기술동향 III에 대한 정보입니다. 특강 II는 '고고학이 바라본 도서관의 역사, 그리고 지식의 미래'로 경희대학교 사학과 강인욱 교수/도서관장님이 강연합니다. 신기술동향 III는 '도서관 실내환경과 개선방안'으로 ㈜크린바이오 대표이사 김해중님이 발표합니다. 시간은 11:10-12:40입니다.",
+            "lunch": "12:40-14:00에 점심 식사가 있습니다.",
+            "issue2_new_tech4": "이슈 II와 신기술동향 IV에 대한 정보입니다. 이슈 II는 'The Evolving Publishing Landscape: Open Access and Beyond'로 MDPI CEO 스테판 토체프님이 발표합니다. 신기술동향 IV는 'Inside MDPI: Our Journey, Editorial Practices & Global Collaboration'으로 MDPI 과학전문위원회 총괄팀장 줄리아 스테페넬리님이 발표합니다. 시간은 14:00-15:20입니다.",
+            "break4": "15:20-15:50에 Coffee Break, 전시 부스 관람이 있습니다.",
+            "case3_new_tech5_6_case4": "사례발표 III, 신기술동향 V, 신기술동향 VI, 사례발표 IV에 대한 정보입니다. 사례발표 III은 한양대학교의 '신규 교외접속 솔루션, <OpenAthens> 구축 경험 공유'로 한양대 백남학술정보관 이상은 사서님이 발표합니다. 신기술동향 V는 'Academic AI 기반의 ProQuest Research Assistant'로 Clarivate Product Sales Manager 박지윤님이 발표합니다. 신기술동향 VI는 'De Gruyter Brill: Your Partner to Research Excellence'로 De Gruyter Brill Senior Sales Manager Peng Guo님이 발표합니다. 사례발표 IV는 '대학도서관 리모델링과 장서 폐기: 공간 확보를 위한 선택과 조정'으로 울산대학교 중앙도서관 김초롱 부장님이 발표합니다. 시간은 15:50-17:50입니다.",
+            "rest": "17:50-18:10에 휴식이 있습니다.",
+            "dinner2": "18:10-21:00에 만찬이 있습니다.",
+            "discussion": "09:00-09:30에 주제 토론과 총평이 있습니다.",
+            "closing_ceremony": "09:30-09:40에 폐회식이 있습니다."
+        };
+
         // 스크롤 애니메이션 (데스크톱에서만) - Tailwind CSS를 사용하여 애니메이션 대체 가능
         if (window.innerWidth > 768) {
             window.addEventListener('scroll', function() {
@@ -639,6 +813,85 @@
 
                     // 스크롤 이동
                     targetContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+            });
+
+            // LLM 상호작용 버튼 및 기능
+            const llmToggleButtons = document.querySelectorAll('.llm-toggle-button');
+
+            llmToggleButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const llmSection = this.closest('.schedule-content').nextElementSibling;
+                    if (llmSection && llmSection.classList.contains('llm-interaction-section')) {
+                        llmSection.classList.toggle('hidden');
+                        // 다른 섹션이 열려있으면 닫기
+                        document.querySelectorAll('.llm-interaction-section').forEach(section => {
+                            if (section !== llmSection) {
+                                section.classList.add('hidden');
+                            }
+                        });
+                    }
+                });
+            });
+
+            const llmAskButtons = document.querySelectorAll('.llm-ask-button');
+
+            llmAskButtons.forEach(button => {
+                button.addEventListener('click', async function() {
+                    const llmSection = this.closest('.llm-interaction-section');
+                    const sessionId = llmSection.dataset.sessionId;
+                    const inputElement = llmSection.querySelector('.llm-input');
+                    const responseElement = llmSection.querySelector('.llm-response');
+                    const loadingElement = llmSection.querySelector('.llm-loading');
+                    const userQuery = inputElement.value.trim();
+
+                    if (!userQuery) {
+                        responseElement.innerText = "질문을 입력해주세요.";
+                        return;
+                    }
+
+                    const sessionInfo = sessionContent[sessionId] || "이 세션에 대한 정보가 없습니다.";
+                    let prompt;
+
+                    if (userQuery.toLowerCase() === '요약') {
+                        prompt = `다음 워크숍 세션 내용을 100자 내외로 요약해 주세요. 내용은 다음과 같습니다: "${sessionInfo}"`;
+                    } else {
+                        prompt = `다음 워크숍 세션 내용에 기반하여 질문에 답변해 주세요. 세션 내용: "${sessionInfo}". 질문: "${userQuery}"`;
+                    }
+
+                    loadingElement.classList.remove('hidden');
+                    responseElement.innerText = ''; // Clear previous response
+
+                    try {
+                        let chatHistory = [];
+                        chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                        const payload = { contents: chatHistory };
+                        const apiKey = ""; // Canvas will provide this automatically
+                        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                        const response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        const result = await response.json();
+
+                        if (result.candidates && result.candidates.length > 0 &&
+                            result.candidates[0].content && result.candidates[0].content.parts &&
+                            result.candidates[0].content.parts.length > 0) {
+                            const text = result.candidates[0].content.parts[0].text;
+                            responseElement.innerText = text;
+                        } else {
+                            responseElement.innerText = "답변을 생성할 수 없습니다. 다시 시도해주세요.";
+                            console.error("Gemini API response structure unexpected:", result);
+                        }
+                    } catch (error) {
+                        responseElement.innerText = "오류가 발생했습니다. 잠시 후 다시 시도해주세요.";
+                        console.error("Error calling Gemini API:", error);
+                    } finally {
+                        loadingElement.classList.add('hidden');
+                    }
                 });
             });
         });
