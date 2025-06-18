@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>한국사립대학교도서관협의회 제38차 실무자 워크숍</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        .hero {
+            background-image: url('image_a91afe.jpg'); /* 제주도 배경 이미지 */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4); /* 오버레이 */
+        }
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            padding: 20px;
+        }
+        .section-title {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: #60a5fa; /* Tailwind blue-400 */
+            border-radius: 2px;
+        }
+        .info-card, .schedule-day, .attraction-card, .course-header, .booking-notice {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        .info-card:hover, .attraction-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        }
+        .schedule-day h3 {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6); /* Blue gradient */
+            color: white;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+        .schedule-item {
+            display: flex;
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+            align-items: flex-start;
+        }
+        .schedule-item:last-child {
+            border-bottom: none;
+        }
+        .schedule-time {
+            font-weight: 600;
+            color: #1d4ed8; /* Darker blue */
+            min-width: 100px;
+            margin-right: 1rem;
+        }
+        .course-tab {
+            background-color: #cbd5e1; /* Tailwind slate-300 */
+            color: #333;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .course-tab.active, .course-tab:hover {
+            background-color: #60a5fa; /* Tailwind blue-400 */
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .comparison-table {
+            border-collapse: separate;
+            border-spacing: 0;
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        .comparison-table th, .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .comparison-table th {
+            background-color: #f1f5f9; /* Tailwind slate-100 */
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+        .comparison-table tr:nth-child(even) {
+            background-color: #fbfdfe; /* Lighter shade */
+        }
+        .comparison-table td:first-child {
+            font-weight: 500;
+            color: #475569; /* Tailwind slate-600 */
+        }
+        .map-placeholder {
+            background: #e2e8f0; /* Light gray for placeholder */
+            height: 400px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b; /* Tailwind slate-500 */
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+        .contact-info .icon {
+            color: #60a5fa; /* Tailwind blue-400 */
+            font-size: 1.8rem;
+            margin-right: 15px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: 70vh;
+                border-bottom-left-radius: 30px;
+                border-bottom-right-radius: 30px;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content .subtitle {
+                font-size: 1.1rem;
+            }
+            .hero-content .theme {
+                font-size: 1.2rem;
+            }
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            .schedule-day h3 {
+                font-size: 1.2rem;
+                padding: 1rem;
+            }
+            .schedule-time {
+                min-width: 80px;
+                font-size: 0.85rem;
+            }
+            .schedule-content {
+                font-size: 0.9rem;
+            }
+            .course-tabs {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .course-tab {
+                width: 100%;
+            }
+            .attraction-grid {
+                grid-template-columns: 1fr;
+            }
+            .comparison-table th, .comparison-table td {
+                font-size: 0.9rem;
+                padding: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero relative flex items-center justify-center text-white text-center">
+        <div class="hero-content relative z-10 p-5 max-w-4xl">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">📚 한국사립대학교도서관협의회</h1>
+            <p class="subtitle text-xl sm:text-2xl mb-6">제38차 실무자 워크숍</p>
+            <p class="theme text-2xl sm:text-3xl font-semibold text-yellow-300 mb-8 leading-relaxed">🔥 지식의 용광로, 열정과 혁신으로 빚은 대학도서관</p>
+            <a href="https://kapul.or.kr/217" class="inline-block bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                📝 참가신청 바로가기
+            </a>
+        </div>
+    </section>
+
+    <!-- 행사 개요 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-10 text-center">🌟 행사 개요</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="info-card p-6 text-center">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3">📅 일시</h3>
+                    <p class="text-gray-700 font-medium text-lg"><strong>2025년 7월 2일(수) ~ 7월 4일(금)</strong></p>
+                    <p class="text-gray-500 text-sm">2박 3일간의 알찬 프로그램</p>
+                </div>
+                <div class="info-card p-6 text-center">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3">🏖️ 장소</h3>
+                    <p class="text-gray-700 font-medium text-lg"><strong>서귀포 KAL호텔</strong></p>
+                    <p class="text-gray-500 text-sm">📍 서귀포시 칠십리로 242</p>
+                </div>
+                <div class="info-card p-6 text-center">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3">👥 참가대상</h3>
+                    <p class="text-gray-700 font-medium text-lg"><strong>회원관 실무자</strong></p>
+                    <p class="text-gray-500 text-sm">대학도서관 운영 전문가들의 네트워킹</p>
+                </div>
+                <div class="info-card p-6 text-center">
+                    <h3 class="text-xl font-semibold text-blue-600 mb-3">💰 참가비</h3>
+                    <p class="text-gray-700 font-medium text-lg"><strong>400,000원</strong></p>
+                    <p class="text-gray-500 text-sm">2인 1실, 강사료, 교재비 포함</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 프로그램 일정 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-10 text-center">📋 프로그램 일정</h2>
+            <div class="schedule-container bg-gray-50 p-6 rounded-2xl shadow-inner">
+                <div class="schedule-day mb-8">
+                    <h3>🎯 7월 2일(수) - 개회 및 특강</h3>
+                    <div class="p-5">
+                        <div class="schedule-item">
+                            <div class="schedule-time">13:30-14:00</div>
+                            <div class="schedule-content">📝 등록</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">14:00-14:20</div>
+                            <div class="schedule-content">
+                                <p class="font-semibold text-gray-800">🎊 개회식</p>
+                                <em class="text-gray-600">- 인사말: 포항공과대학교 이윤태 회장</em>
+                                <em class="text-gray-600">- 축사: 한국도서관협회 곽승진 회장</em>
+                                <em class="text-gray-600">- 격려사: 한국대학도서관연합회 장우권 회장</em>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">14:20-16:00</div>
+                            <div class="schedule-content">
+                                <p class="font-semibold text-gray-800">🤖 특강 I: 생성형 AI 기술 동향 및 AI시대에서의 적응 방안</p>
+                                <em class="text-gray-600">- 포항공과대학교 인공지능대학원장 서영주</em>
+                                <p class="mt-2 font-semibold text-gray-800">📊 이슈 I: 대학도서관 현황 분석 및 전략</p>
+                                <em class="text-gray-600">- 동국대 미래융합교육원 대우교수 정재영</em>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">16:00-16:30</div>
+                            <div class="schedule-content">☕ 사진촬영 / Coffee Break / 전시부스 관람</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">16:30-18:10</div>
+                            <div class="schedule-content">
+                                <p class="font-semibold text-gray-800">💡 사례발표 I: 연세대학교 성과관리체계 구축 + AI활용 사례</p>
+                                <em class="text-gray-600">- 연세대학교 기획실 성과분석팀 이경민 팀장</em>
+                                <p class="mt-2 font-semibold text-gray-800">🔧 신기술동향 I: 사용자 기반 지능형 통합학술정보플랫폼 소개</p>
+                                <em class="text-gray-600">- 주 아이네크 여재구 차장</em>
+                                <p class="mt-2 font-semibold text-gray-800">📈 사례발표 II: 데이터 리터러시 역량 강화를 위한 '숭실(SSU)데이터톤' 운영사례</p>
+                                <em class="text-gray-600">- 숭실대학교 중앙도서관 최현진 사서</em>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">18:10-18:40</div>
+                            <div class="schedule-content">☕ Coffee Break / 전시부스 관람 / 체크인</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">18:40-21:00</div>
+                            <div class="schedule-content">🍽️ 만찬</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-day mb-8">
+                    <h3>🚀 7월 3일(목) - 심화 세션</h3>
+                    <div class="p-5">
+                        <div class="schedule-item">
+                            <div class="schedule-time">09:30-10:40</div>
+                            <div class="schedule-content">
+                                <p class="font-semibold text-gray-800">🏆 우수논문: K-첨단분야 디지털 컬렉션 구축</p>
+                                <em class="text-gray-600">- &lt;제15회 사대도협 논문, 우수사례 및 혁신 아이디어 공모 '우수사례' 당선작 발표&gt; 영남대학교 중앙도서관 문정순 팀장</em>
+                                <p class="mt-2 font-semibold text-gray-800">💾 신기술동향 II: 데이터의 서재 : 도서관을 통한 공공데이터 스마트 AI검색 플랫폼</p>
+                                <em class="text-gray-600">- ㈜리버트리 대표 유제승</em>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">10:40-11:10</div>
+                            <div class="schedule-content">☕ Coffee Break / 전시부스 관람 및 부스 이벤트</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">11:10-12:40</div>
+                            <div class="schedule-content">
+                                <p class="font-semibold text-gray-800">🏛️ 특강 II: 고고학이 바라본 도서관의 역사, 그리고 지식의 미래</p>
+                                <em class="text-gray-600">- 경희대학교 사학과 강인욱 교수 / 도서관장</em>
+                                <p class="mt-2 font-semibold text-gray-800">🌿 신기술동향 III: 도서관 실내환경과 개선방안</p>
+                                <em class="text-gray-600">- ㈜크린바이오 대표이사 김해중</em>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">12:40-14:00</div>
+                            <div class="schedule-content">🍝 점심 식사</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">14:00-15:20</div>
+                            <div class="schedule-content">
+                                <p class="font-semibold text-gray-800">🌐 이슈 II: The Evolving Publishing Landscape: Open Access and Beyond</p>
+                                <em class="text-gray-600">- 스테판 토체프, MDPI CEO</em>
+                                <p class="mt-2 font-semibold text-gray-800">✨ 신기술동향 IV: Inside MDPI: Our Journey, Editorial Practices & Global Collaboration</p>
+                                <em class="text-gray-600">- 줄리아 스테페넬리, MDPI 과학전문위원회 총괄팀장</em>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">15:20-15:50</div>
+                            <div class="schedule-content">☕ Coffee Break / 전시 부스 관람</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">15:50-17:50</div>
+                            <div class="schedule-content">
+                                <p class="font-semibold text-gray-800">💻 사례발표 III: 한양대학교 신규 교외접속 솔루션, &lt;OpenAthens&gt; 구축 경험 공유</p>
+                                <em class="text-gray-600">- 한양대 백남학술정보관 이상은 사서</em>
+                                <p class="mt-2 font-semibold text-gray-800">💡 신기술동향 V: Academic AI 기반의 ProQuest Research Assistant</p>
+                                <em class="text-gray-600">- 박지윤, Clarivate Product Sales Manager</em>
+                                <p class="mt-2 font-semibold text-gray-800">📚 신기술동향 VI: De Gruyter Brill: Your Partner to Research Excellence</p>
+                                <em class="text-gray-600">- Peng Guo, De Gruyter Brill Senior Sales Manager</em>
+                                <p class="mt-2 font-semibold text-gray-800">🔄 사례발표 IV: 대학도서관 리모델링과 장서 폐기: 공간 확보를 위한 선택과 조정</p>
+                                <em class="text-gray-600">- 울산대학교 중앙도서관 김초롱 부장</em>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">17:50-18:10</div>
+                            <div class="schedule-content">😴 휴식</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">18:10-21:00</div>
+                            <div class="schedule-content">🥳 만찬</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="schedule-day">
+                    <h3>🎉 7월 4일(금) - 종합 토론 및 폐회</h3>
+                    <div class="p-5">
+                        <div class="schedule-item">
+                            <div class="schedule-time">09:00-09:30</div>
+                            <div class="schedule-content">🎤 주제 토론과 총평</div>
+                        </div>
+                        <div class="schedule-item">
+                            <div class="schedule-time">09:30-09:40</div>
+                            <div class="schedule-content">🎁 폐회식</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 네트워킹 코스 -->
+    <section class="py-16 bg-blue-700 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-10 text-center text-white">
+                <span class="relative inline-block">
+                    네트워킹 코스
+                    <span class="absolute left-1/2 -bottom-2 w-20 h-1 bg-white transform -translate-x-1/2 rounded-full"></span>
+                </span>
+            </h2>
+            <p class="text-center text-lg mb-8 max-w-2xl mx-auto opacity-90">
+                7월 3일(목)에는 참가자분들의 관심사에 따라 <strong class="text-yellow-300">네트워킹 코스를 선택</strong>하여 참여하실 수 있습니다. (워크숍 오후 세션과 중복되지 않으며, 별도의 일정으로 진행됩니다.)
+            </p>
+
+            <div class="course-selector">
+                <div class="course-tabs flex flex-wrap justify-center gap-4 mb-8">
+                    <button class="course-tab active" data-course="west">🌴 1안: 서부 코스 (환상숲 & 노형수퍼마켙)</button>
+                    <button class="course-tab" data-course="east">🗿 2안: 동부 코스 (돌문화공원 & 함덕해수욕장)</button>
+                </div>
+
+                <div id="course-west" class="course-content active p-6">
+                    <div class="course-header mb-8 text-center bg-blue-600 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-3xl font-bold text-white mb-4">1안: 서부 코스 (환상숲 & 노형수퍼마켙)</h3>
+                        <p class="text-lg text-blue-100">제주 서쪽의 아름다운 자연경관과 독특한 문화를 체험합니다.</p>
+                    </div>
+                    <div class="attraction-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="attraction-card p-6 bg-white bg-opacity-10 text-white rounded-xl shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                            <div class="attraction-image text-center text-6xl mb-4">🏞️</div>
+                            <h4 class="text-2xl font-bold text-yellow-300 mb-3 text-center">환상숲 곶자왈 & 족욕체험</h4>
+                            <p class="text-center text-opacity-90">
+                                제주의 독특한 생태계를 간직한 곶자왈 숲에서 해설사와 함께 트레킹하며 식물들의 사연을 알아갑니다.
+                                시원한 원시림 속 힐링 족욕체험으로 워크숍의 피로를 풀어보세요.
+                            </p>
+                            <div class="feature-list mt-5 text-gray-200">
+                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 주요 활동: 숲 트레킹, 족욕체험, 숲 해설</p>
+                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 특징: 여름에도 시원한 원시림, 부담 없는 산책길</p>
+                                <p class="flex items-center"><span class="text-yellow-300 mr-2">✔️</span> 준비물: 여분의 양말 (족욕 후)</p>
+                            </div>
+                            <div class="tip-box bg-blue-800 bg-opacity-50 border border-blue-600 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-yellow-200 mb-1">💡 팁:</p>
+                                <p class="text-blue-100">따뜻한 차와 함께하는 족욕으로 몸과 마음을 편안하게 만드세요!</p>
+                            </div>
+                        </div>
+                        <div class="attraction-card p-6 bg-white bg-opacity-10 text-white rounded-xl shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                            <div class="attraction-image text-center text-6xl mb-4">🎬</div>
+                            <h4 class="text-2xl font-bold text-yellow-300 mb-3 text-center">노형수퍼마켙 관광</h4>
+                            <p class="text-center text-opacity-90">
+                                옛 극장을 개조한 미디어아트 전시관으로, 원형극장 전체를 스크린으로 활용하는 독특한 공간입니다.
+                                내부에 카페가 있어 커피 한 잔과 함께 몰입감 있는 미디어아트를 감상할 수 있습니다.
+                            </p>
+                            <div class="feature-list mt-5 text-gray-200">
+                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 관람 형식: 원형극장 미디어아트</p>
+                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 편의시설: 내부 카페</p>
+                                <p class="flex items-center"><span class="text-yellow-300 mr-2">✔️</span> 위치: 공항에서 멀지 않은 노형동</p>
+                            </div>
+                            <div class="tip-box bg-blue-800 bg-opacity-50 border border-blue-600 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-yellow-200 mb-1">💡 팁:</p>
+                                <p class="text-blue-100">컬러풀한 옷을 입으면 더 예쁜 사진을 남길 수 있습니다!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="course-east" class="course-content p-6">
+                    <div class="course-header mb-8 text-center bg-blue-600 p-8 rounded-xl shadow-lg">
+                        <h3 class="text-3xl font-bold text-white mb-4">2안: 동부 코스 (돌문화공원 & 함덕해수욕장)</h3>
+                        <p class="text-lg text-blue-100">제주 동쪽의 유구한 역사와 아름다운 자연을 탐험합니다.</p>
+                    </div>
+                    <div class="attraction-grid grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="attraction-card p-6 bg-white bg-opacity-10 text-white rounded-xl shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                            <div class="attraction-image text-center text-6xl mb-4">🗿</div>
+                            <h4 class="text-2xl font-bold text-yellow-300 mb-3 text-center">제주 돌문화공원</h4>
+                            <p class="text-center text-opacity-90">
+                                설문대할망 신화를 테마로 제주의 자연과 예술을 감상할 수 있는 지질 박물관 및 공원입니다.
+                                거대한 석상, 화산암석 전시, 미술 갤러리 등 실내외 다양한 볼거리가 있습니다.
+                            </p>
+                            <div class="feature-list mt-5 text-gray-200">
+                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 주요 전시: 제주형성전시관, 수석전시관, 돌갤러리, 오백장군갤러리</p>
+                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 포토스팟: '하늘연못' (물 위를 걷는 듯한 사진 연출)</p>
+                                <p class="flex items-center"><span class="text-yellow-300 mr-2">✔️</span> 편의시설: 양산 비치, 전동차 운행</p>
+                            </div>
+                            <div class="tip-box bg-blue-800 bg-opacity-50 border border-blue-600 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-yellow-200 mb-1">💡 팁:</p>
+                                <p class="text-blue-100">설문대할망 설화를 미리 찾아보면 더욱 재미있게 즐길 수 있습니다!</p>
+                            </div>
+                        </div>
+                        <div class="attraction-card p-6 bg-white bg-opacity-10 text-white rounded-xl shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                            <div class="attraction-image text-center text-6xl mb-4">🏖️</div>
+                            <h4 class="text-2xl font-bold text-yellow-300 mb-3 text-center">함덕해수욕장 & 서우봉</h4>
+                            <p class="text-center text-opacity-90">
+                                에메랄드빛 바다와 야자수가 이국적인 함덕해수욕장에서 해변 산책과 소품샵 구경을 즐기고,
+                                오션뷰 카페에서 휴식을 취해보세요. 서우봉 둘레길에서는 바다 전경을 한눈에 담을 수 있습니다.
+                            </p>
+                            <div class="feature-list mt-5 text-gray-200">
+                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 주요 활동: 해변 산책, 카페 휴식, 서우봉 트레킹</p>
+                                <p class="flex items-center mb-2"><span class="text-yellow-300 mr-2">✔️</span> 특징: 제주 올레 19코스 포함, 7월 해바라기 개화</p>
+                                <p class="flex items-center"><span class="text-yellow-300 mr-2">✔️</span> 미식/쇼핑: 소품샵, 오션뷰 카페</p>
+                            </div>
+                            <div class="tip-box bg-blue-800 bg-opacity-50 border border-blue-600 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-yellow-200 mb-1">💡 팁:</p>
+                                <p class="text-blue-100">함덕해변 안쪽에는 예쁜 소품샵들이 많으니 둘러보세요!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-comparison mt-16">
+                <h3 class="text-2xl font-bold text-white mb-6 text-center">네트워킹 코스 비교</h3>
+                <table class="comparison-table w-full rounded-lg">
+                    <thead>
+                        <tr>
+                            <th class="px-4 py-3 bg-gray-100 text-gray-700">구분</th>
+                            <th class="px-4 py-3 bg-gray-100 text-gray-700">1안: 서부 코스</th>
+                            <th class="px-4 py-3 bg-gray-100 text-gray-700">2안: 동부 코스</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="px-4 py-3 text-gray-800 font-medium">주요 장소</td>
+                            <td class="px-4 py-3 text-gray-700">환상숲 곶자왈, 노형수퍼마켙</td>
+                            <td class="px-4 py-3 text-gray-700">제주 돌문화공원, 함덕해수욕장 & 서우봉</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 text-gray-800 font-medium">테마</td>
+                            <td class="px-4 py-3 text-gray-700">제주 서부 자연 & 미디어아트</td>
+                            <td class="px-4 py-3 text-gray-700">제주 동부 역사 & 해변</td>
+                        </tr>
+                        <tr>
+                            <td class="px-4 py-3 text-gray-800 font-medium">주요 활동</td>
+                            <td class="px-4 py-3 text-gray-700">숲 트레킹, 족욕, 미디어아트 감상</td>
+                            <td class="px-4 py-3 text-gray-700">박물관/공원 관람, 해변 산책, 오션뷰 트레킹</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="booking-notice bg-white bg-opacity-10 p-8 rounded-xl text-center mt-10 shadow-lg border border-white border-opacity-20 backdrop-blur-md">
+                    <h3 class="text-2xl font-bold text-yellow-300 mb-4">📢 코스 선택 및 안내</h3>
+                    <p class="text-lg text-white mb-3">
+                        참가신청 시 <strong class="text-yellow-300">희망하는 네트워킹 코스를 선택</strong>해 주세요.
+                    </p>
+                    <p class="text-md text-white opacity-90">
+                        신청이 저조한 코스는 폐지될 수 있습니다. 자세한 내용은 신청 시 안내될 예정입니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 오시는 길 -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-10 text-center">📍 오시는 길</h2>
+            <div class="map-placeholder h-96 bg-gray-200 rounded-xl flex items-center justify-center text-gray-500 text-lg shadow-lg">
+                [호텔 위치 지도 이미지 삽입 예정]
+            </div>
+            <p class="text-center text-gray-600 mt-6 text-lg">
+                서귀포 KAL호텔은 제주 국제공항에서 차량으로 약 50분 거리에 위치하고 있습니다. <br>
+                자세한 오시는 길은 추후 안내될 예정입니다.
+            </p>
+        </div>
+    </section>
+
+    <!-- 문의하기 -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="section-title text-3xl font-bold mb-10 text-center">📧 문의하기</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="contact-info p-8 rounded-xl shadow-lg bg-gray-50">
+                    <p class="flex items-center text-lg mb-4 text-gray-700">
+                        <span class="icon text-blue-600">📞</span> 전화: 054-279-2891
+                    </p>
+                    <p class="flex items-center text-lg mb-4 text-gray-700">
+                        <span class="icon text-blue-600">✉️</span> 이메일: kapul-2025@postech.ac.kr
+                    </p>
+                    <p class="flex items-center text-lg text-gray-700">
+                        <span class="icon text-blue-600">⏰</span> 운영 시간: 평일 09:00 - 18:00
+                    </p>
+                </div>
+                <div class="p-8 rounded-xl shadow-lg bg-gray-50">
+                    <p class="text-lg text-gray-700 leading-relaxed">
+                        워크숍 관련 문의사항이 있으시면 언제든지 위 연락처로 문의해 주시기 바랍니다. <br>
+                        친절하게 답변해 드리겠습니다.
+                    </p>
+                    <p class="text-md text-gray-500 mt-4">
+                        (점심시간 12:00 - 13:00 제외)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 text-center rounded-t-lg">
+        <div class="container mx-auto px-4">
+            <p class="mb-2">&copy; 2025 한국사립대학교도서관협의회. All rights reserved.</p>
+            <p class="text-sm text-gray-400">제38차 실무자 워크숍</p>
+        </div>
+    </footer>
+
+    <script>
+        // 스크롤 애니메이션 (데스크톱에서만) - Tailwind CSS를 사용하여 애니메이션 대체 가능
+        if (window.innerWidth > 768) {
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const parallax = document.querySelector('.hero');
+                // Parallax effect by moving background slower than foreground
+                parallax.style.backgroundPositionY = `${-scrolled * 0.3}px`;
+            });
+        }
+
+        // 뷰포트 크기 변경 감지
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 768) {
+                document.querySelector('.hero').style.transform = 'none';
+            }
+        });
+
+        // 네트워킹 코스 탭 기능
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.course-tab');
+            const contents = document.querySelectorAll('.course-content');
+
+            // 초기 로드 시 첫 번째 탭 활성화 (이미 active 클래스가 있으나, 안전을 위해)
+            const initialActiveTab = document.querySelector('.course-tab.active');
+            if (!initialActiveTab) {
+                if (tabs.length > 0) {
+                    tabs[0].classList.add('active');
+                    document.getElementById(`course-${tabs[0].getAttribute('data-course')}`).classList.add('active');
+                }
+            }
+
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const course = this.getAttribute('data-course');
+
+                    // 모든 탭 비활성화
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // 선택된 탭 활성화
+                    this.classList.add('active');
+                    document.getElementById(`course-${course}`).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
