@@ -206,6 +206,43 @@
             transform: scale(1.1);
         }
 
+        /* New styles for Navbar */
+        .navbar {
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: sticky; /* Sticky positioning */
+            top: 0; /* Stick to the top */
+            z-index: 999; /* Ensure it stays above other content */
+            width: 100%;
+            padding: 1rem 0;
+        }
+        .navbar-container {
+            display: flex;
+            justify-content: center; /* Center the links */
+            align-items: center;
+        }
+        .navbar-link {
+            color: #3b82f6; /* Blue-600 */
+            font-weight: 600;
+            padding: 0.75rem 1.25rem;
+            border-radius: 9999px; /* Fully rounded pills */
+            transition: all 0.2s ease-in-out;
+            text-decoration: none;
+            margin: 0 0.5rem; /* Spacing between links */
+            white-space: nowrap; /* Prevent wrapping */
+        }
+        .navbar-link:hover {
+            background-color: #e0f2fe; /* Light blue on hover */
+            color: #1d4ed8; /* Darker blue on hover */
+        }
+        /* Active state for current section (optional, can be added with JS) */
+        .navbar-link.active {
+            background-color: #3b82f6;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero {
@@ -262,11 +299,30 @@
                 font-size: 1rem;
                 padding: 10px;
             }
+            /* Navbar adjustments for small screens */
+            .navbar-container {
+                flex-wrap: wrap; /* Allow links to wrap to next line */
+                padding: 0 0.5rem;
+            }
+            .navbar-link {
+                margin: 0.25rem; /* Smaller margin for wrapped links */
+                padding: 0.5rem 0.75rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
+    <nav class="navbar">
+        <div class="navbar-container container mx-auto">
+            <a href="#overview-section" class="navbar-link">🌟 행사 개요</a>
+            <a href="#program-section" class="navbar-link">📋 프로그램 일정</a>
+            <a href="#networking-course-section" class="navbar-link">🤝 네트워킹 코스</a>
+            <a href="#directions-section" class="navbar-link">📍 오시는 길</a>
+            <a href="#contact-section" class="navbar-link">📧 문의하기</a>
+        </div>
+    </nav>
+
     <section class="hero relative flex items-center justify-center text-white text-center">
         <div class="hero-content relative z-10 p-5 max-w-4xl">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 leading-tight">
@@ -280,8 +336,7 @@
         </div>
     </section>
 
-    <!-- 행사 개요 -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-gray-50" id="overview-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">🌟 행사 개요</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -309,8 +364,7 @@
         </div>
     </section>
 
-    <!-- 프로그램 일정 -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white" id="program-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">📋 프로그램 일정</h2>
             <div class="schedule-container bg-gray-50 p-6 rounded-2xl shadow-inner">
@@ -327,7 +381,7 @@
                             <div class="schedule-time">14:00-14:20</div>
                             <div class="schedule-content">
                                 <p class="mb-2">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">� 개회식</span>
+                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2"> 개회식</span>
                                 </p>
                                 <em class="text-gray-600">- 인사말: 포항공과대학교 이윤태 회장<br>- 축사: 한국도서관협회 곽승진 회장<br>- 격려사: 한국대학도서관연합회 장우권 회장</em>
                             </div>
@@ -515,7 +569,6 @@
         </div>
     </section>
 
-    <!-- 네트워킹 코스 -->
     <section class="py-16 bg-blue-700 text-white" id="networking-course-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center text-white">
@@ -662,8 +715,7 @@
         </div>
     </section>
 
-    <!-- 오시는 길 -->
-    <section class="py-16 bg-gray-50">
+    <section class="py-16 bg-gray-50" id="directions-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">📍 오시는 길</h2>
             <div class="map-placeholder">
@@ -676,8 +728,7 @@
         </div>
     </section>
 
-    <!-- 문의하기 -->
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white" id="contact-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">📧 문의하기</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -705,7 +756,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 text-center rounded-t-lg">
         <div class="container mx-auto px-4">
             <p class="mb-2">&copy; 2025 한국사립대학교도서관협의회. All rights reserved.</p>
@@ -713,7 +763,6 @@
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <a href="#" id="backToTopBtn">TOP</a>
 
     <script>
@@ -783,6 +832,32 @@
                     behavior: 'smooth' // Smooth scroll to top
                 });
             });
+
+            // Highlight active navbar link on scroll
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.navbar-link');
+
+            function highlightNavLink() {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - document.querySelector('.navbar').offsetHeight; // Adjust for sticky header
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.href.includes(current)) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', highlightNavLink);
+            // Also call on load to set initial active link if page is not at top
+            highlightNavLink();
         });
     </script>
 </body>
