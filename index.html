@@ -7,11 +7,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Base styles for light mode */
         body {
             font-family: 'Inter', sans-serif;
             color: #333;
-            background-color: #f8f9fa;
+            background: linear-gradient(to bottom right, #f8f9fa, #e2e8f0); /* Subtle light gradient */
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
+        section.bg-white {
+            background: linear-gradient(to top left, #ffffff, #f0f4f8);
+        }
+        section.bg-gray-50 {
+            background: linear-gradient(to bottom right, #f8f9fa, #f1f5f9);
+        }
+
+        /* Progress bar */
+        #progressBar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px; /* Increased height for visibility */
+            background-color: #3b82f6; /* Blue-600 */
+            z-index: 9999;
+            width: 0%; /* Initial width */
+            transition: width 0.1s linear; /* Smooth fill */
+        }
+
+        /* Hero Section */
         .hero {
             background-image: url('image_a91afe.jpg'); /* 제주도 배경 이미지 */
             background-size: cover;
@@ -43,6 +65,8 @@
             max-width: 900px;
             padding: 20px;
         }
+
+        /* Section Titles */
         .section-title {
             color: #2c3e50;
             font-weight: 700;
@@ -61,17 +85,22 @@
             background-color: #60a5fa; /* Tailwind blue-400 */
             border-radius: 2px;
         }
+
+        /* Cards and interactive elements */
         .info-card, .schedule-day, .attraction-card, .course-header, .booking-notice {
             background: #ffffff;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smooth animation for all */
             overflow: hidden;
+            transform-style: preserve-3d; /* Enable 3D transforms */
         }
         .info-card:hover, .attraction-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-8px) perspective(1000px) rotateY(3deg); /* 3D transform on hover */
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
+
+        /* Schedule Timeline Design */
         .schedule-day h3 {
             background: linear-gradient(135deg, #60a5fa, #3b82f6); /* Blue gradient */
             color: white;
@@ -79,29 +108,101 @@
             margin-bottom: 1.5rem;
             font-size: 1.4rem;
             font-weight: 600;
+            border-radius: 15px 15px 0 0; /* Rounded top corners */
         }
         .schedule-item {
             display: flex;
             padding: 1rem;
             border-bottom: 1px solid #e2e8f0;
             align-items: flex-start;
+            position: relative; /* For timeline line and circle */
+            padding-left: 40px; /* Space for timeline elements */
         }
         .schedule-item:last-child {
             border-bottom: none;
         }
+
+        /* Vertical Timeline Line */
+        .schedule-item::before {
+            content: '';
+            position: absolute;
+            left: 17px; /* Center with circle */
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #cbd5e1; /* Light gray line */
+            z-index: 1;
+        }
+        /* Timeline Circle */
+        .schedule-item::after {
+            content: '';
+            position: absolute;
+            left: 10px; /* Adjust to align with line */
+            top: 1.2rem; /* Position relative to text */
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: #3b82f6; /* Blue circle */
+            border: 3px solid #ffffff; /* White border */
+            box-shadow: 0 0 0 2px #3b82f6; /* Outer blue glow */
+            z-index: 2;
+        }
+        /* Adjust for first/last item circles to not extend line */
+        .schedule-item:first-child::before { top: 1.2rem; }
+        .schedule-item:last-child::before { bottom: calc(100% - 1.2rem); } /* Stops line at the last circle */
+
+
         .schedule-time {
             font-weight: 600;
             color: #1d4ed8; /* Darker blue */
             min-width: 100px;
             margin-right: 1rem;
+            flex-shrink: 0; /* Prevent shrinking */
+            position: relative; /* To be above the line */
+            z-index: 3;
         }
+
+        /* Session Type Color Coding */
+        .session-type {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.875rem; /* text-sm */
+            font-weight: 500; /* font-medium */
+            padding: 0.375rem 0.75rem; /* px-3 py-1.5 */
+            border-radius: 9999px; /* rounded-full */
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* shadow-sm */
+            margin-right: 0.5rem; /* mr-2 */
+            white-space: nowrap; /* Prevent wrapping */
+        }
+        .session-type-general {
+            background-color: #bfdbfe; /* blue-200 */
+            color: #1e40af; /* blue-800 */
+        }
+        .session-type-special-lecture {
+            background-color: #fce7f3; /* pink-100 */
+            color: #9d174d; /* pink-800 */
+        }
+        .session-type-issue {
+            background-color: #e0f2fe; /* lightblue-100 */
+            color: #0369a1; /* lightblue-800 */
+        }
+        .session-type-case-study {
+            background-color: #dcfce7; /* green-100 */
+            color: #166534; /* green-800 */
+        }
+        .session-type-new-tech {
+            background-color: #e9d5ff; /* purple-100 */
+            color: #6b21a8; /* purple-800 */
+        }
+
+
         .course-tab {
             background-color: #cbd5e1; /* Tailwind slate-300 */
             color: #333;
             padding: 12px 25px;
             border-radius: 25px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             font-weight: 600;
             display: inline-flex;
             align-items: center;
@@ -186,7 +287,7 @@
             font-weight: bold;
             text-decoration: none;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+            transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             opacity: 0;
             pointer-events: none; /* Initially disable pointer events */
             z-index: 1000;
@@ -206,7 +307,7 @@
             transform: scale(1.1);
         }
 
-        /* New styles for Navbar */
+        /* Navbar */
         .navbar {
             background-color: #ffffff; /* White background */
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
@@ -215,6 +316,7 @@
             z-index: 999; /* Ensure it stays above other content */
             width: 100%;
             padding: 1rem 0;
+            transition: background-color 0.4s ease, box-shadow 0.4s ease;
         }
         .navbar-container {
             display: flex;
@@ -226,7 +328,7 @@
             font-weight: 600;
             padding: 0.75rem 1.25rem;
             border-radius: 9999px; /* Fully rounded pills */
-            transition: all 0.2s ease-in-out;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             text-decoration: none;
             margin: 0 0.5rem; /* Spacing between links */
             white-space: nowrap; /* Prevent wrapping */
@@ -235,13 +337,142 @@
             background-color: #e0f2fe; /* Light blue on hover */
             color: #1d4ed8; /* Darker blue on hover */
         }
-        /* Active state for current section (optional, can be added with JS) */
+        /* Active state for current section */
         .navbar-link.active {
             background-color: #3b82f6;
             color: white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
+        /* Dark Mode */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: linear-gradient(to bottom right, #1a202c, #2d3748);
+                color: #e2e8f0;
+            }
+            section.bg-white {
+                background: linear-gradient(to top left, #2d3748, #222d3a);
+            }
+            section.bg-gray-50 {
+                background: linear-gradient(to bottom right, #2d3748, #3a475a);
+            }
+            .section-title {
+                color: #e2e8f0;
+            }
+            .section-title::after {
+                background-color: #90cdf4;
+            }
+
+            /* Dark mode for cards and elements */
+            .info-card, .schedule-day, .attraction-card, .course-header, .booking-notice {
+                background-color: #2d3748;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+                border-color: #4a5568;
+            }
+            .schedule-day h3 {
+                background: linear-gradient(135deg, #4299e1, #3182ce);
+                color: white;
+            }
+            .schedule-item {
+                border-bottom-color: #4a5568;
+            }
+            .schedule-item::before {
+                background-color: #4a5568;
+            }
+            .schedule-item::after {
+                background-color: #4299e1;
+                border-color: #2d3748;
+                box-shadow: 0 0 0 2px #4299e1;
+            }
+            .schedule-time {
+                color: #63b3ed;
+            }
+
+            /* Dark mode for session types */
+            .session-type-general {
+                background-color: #2a4365; /* blue-900 */
+                color: #90cdf4; /* blue-300 */
+            }
+            .session-type-special-lecture {
+                background-color: #4a1c31; /* pink-900 */
+                color: #f6adca; /* pink-300 */
+            }
+            .session-type-issue {
+                background-color: #0c4a6e; /* lightblue-900 */
+                color: #93c5fd; /* lightblue-300 */
+            }
+            .session-type-case-study {
+                background-color: #1c4532; /* green-900 */
+                color: #68d391; /* green-300 */
+            }
+            .session-type-new-tech {
+                background-color: #3b1759; /* purple-900 */
+                color: #b794f4; /* purple-300 */
+            }
+
+            .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800 {
+                color: #cbd5e1; /* Lighter gray for dark mode text */
+            }
+            .attraction-card, .contact-info, .booking-notice {
+                background-color: #2d3748;
+                border-color: #4a5568;
+            }
+            .attraction-image { /* Ensure emojis stay visible */
+                filter: brightness(0.8) contrast(1.2);
+            }
+            .attraction-card h4 {
+                color: #f6e05e; /* Yellow-300 for titles */
+            }
+            .tip-box {
+                background-color: #2a4365;
+                border-color: #2c5282;
+                color: #e0f2fe;
+            }
+            .tip-box p {
+                color: #90cdf4;
+            }
+            .course-tab {
+                background-color: #4a5568;
+                color: #e2e8f0;
+            }
+            .course-tab.active, .course-tab:hover {
+                background-color: #4299e1;
+                color: white;
+            }
+            .course-header {
+                background-color: #2d3748;
+            }
+            .course-header h3 {
+                color: white;
+            }
+            .course-header p {
+                color: #a0aec0;
+            }
+            .comparison-table th {
+                background-color: #4a5568;
+                color: #e2e8f0;
+            }
+            .comparison-table tr:nth-child(odd) td {
+                background-color: #2d3748;
+                color: #e2e8f0;
+            }
+            .comparison-table tr:nth-child(even) td {
+                background-color: #4a5568;
+                color: #e2e8f0;
+            }
+            .comparison-table td:first-child {
+                color: #a0aec0;
+            }
+            .map-placeholder {
+                background-color: #4a5568;
+            }
+            .contact-info .icon {
+                color: #90cdf4;
+            }
+            footer {
+                background-color: #1a202c;
+            }
+        }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -310,19 +541,70 @@
                 font-size: 0.9rem;
             }
         }
+
+        /* Print Optimization */
+        @media print {
+            .navbar, #backToTopBtn, .hero::before {
+                display: none !important; /* Hide navigation, back to top button, and hero overlay */
+            }
+            body {
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+            .section-title {
+                color: #000000 !important;
+            }
+            .section-title::after {
+                background-color: #ccc !important;
+            }
+            .info-card, .schedule-day, .attraction-card, .course-header, .booking-notice,
+            .comparison-table, .comparison-table th, .comparison-table td, .tip-box, .map-placeholder, footer {
+                box-shadow: none !important;
+                border: 1px solid #eee !important;
+                background-color: #ffffff !important;
+                color: #000000 !important;
+            }
+            .schedule-day h3 {
+                background: #f0f0f0 !important;
+                color: #333 !important;
+                -webkit-print-color-adjust: exact; /* Ensure background prints */
+                color-adjust: exact;
+            }
+            .schedule-item::before, .schedule-item::after {
+                background-color: #ccc !important;
+                border-color: #fff !important;
+                box-shadow: none !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            .session-type {
+                background-color: #e0e0e0 !important;
+                color: #333 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            .navbar-link, .course-tab {
+                border: 1px solid #eee !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Scroll Progress Bar -->
+    <div id="progressBar" class="fixed top-0 left-0 h-1 bg-blue-500 z-[9999]"></div>
+
+    <!-- Navbar (Sticky Header) -->
     <nav class="navbar">
         <div class="navbar-container container mx-auto">
-            <a href="#overview-section" class="navbar-link">🌟 행사 개요</a>
-            <a href="#program-section" class="navbar-link">📋 프로그램 일정</a>
-            <a href="#networking-course-section" class="navbar-link">🤝 네트워킹 코스</a>
-            <a href="#directions-section" class="navbar-link">📍 오시는 길</a>
-            <a href="#contact-section" class="navbar-link">📧 문의하기</a>
+            <a href="#overview-section" class="navbar-link">🌟 행사 개요<span class="sr-only"> 섹션으로 이동</span></a>
+            <a href="#program-section" class="navbar-link">📋 프로그램 일정<span class="sr-only"> 섹션으로 이동</span></a>
+            <a href="#networking-course-section" class="navbar-link">🤝 네트워킹 코스<span class="sr-only"> 섹션으로 이동</span></a>
+            <a href="#directions-section" class="navbar-link">📍 오시는 길<span class="sr-only"> 섹션으로 이동</span></a>
+            <a href="#contact-section" class="navbar-link">📧 문의하기<span class="sr-only"> 섹션으로 이동</span></a>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero relative flex items-center justify-center text-white text-center">
         <div class="hero-content relative z-10 p-5 max-w-4xl">
             <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 leading-tight">
@@ -336,6 +618,7 @@
         </div>
     </section>
 
+    <!-- 행사 개요 -->
     <section class="py-16 bg-gray-50" id="overview-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">🌟 행사 개요</h2>
@@ -364,6 +647,7 @@
         </div>
     </section>
 
+    <!-- 프로그램 일정 -->
     <section class="py-16 bg-white" id="program-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">📋 프로그램 일정</h2>
@@ -374,14 +658,14 @@
                         <div class="schedule-item">
                             <div class="schedule-time">13:30-14:00</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">📝 등록</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>📝 등록</span>
                             </div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">14:00-14:20</div>
                             <div class="schedule-content">
                                 <p class="mb-2">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2"> 개회식</span>
+                                    <span class="session-type session-type-general"><span class="sr-only">유형: </span>🏆 개회식</span>
                                 </p>
                                 <em class="text-gray-600">- 인사말: 포항공과대학교 이윤태 회장<br>- 축사: 한국도서관협회 곽승진 회장<br>- 격려사: 한국대학도서관연합회 장우권 회장</em>
                             </div>
@@ -390,12 +674,12 @@
                             <div class="schedule-time">14:20-16:00</div>
                             <div class="schedule-content">
                                 <p class="mb-2">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🤖 특강 I</span>
+                                    <span class="session-type session-type-special-lecture"><span class="sr-only">유형: </span>🤖 특강 I</span>
                                     <span class="font-semibold text-gray-800">생성형 AI 기술 동향 및 AI시대에서의 적응 방안</span>
                                 </p>
                                 <em class="text-gray-600">- 포항공과대학교 인공지능대학원장 서영주</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">📊 이슈 I</span>
+                                    <span class="session-type session-type-issue"><span class="sr-only">유형: </span>📊 이슈 I</span>
                                     <span class="font-semibold text-gray-800">대학도서관 현황 분석 및 전략</span>
                                 </p>
                                 <em class="text-gray-600">- 동국대 미래융합교육원 대우교수 정재영</em>
@@ -404,24 +688,24 @@
                         <div class="schedule-item">
                             <div class="schedule-time">16:00-16:30</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">☕ Coffee Break & 전시</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>☕ Coffee Break & 전시</span>
                             </div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">16:30-18:10</div>
                             <div class="schedule-content">
                                 <p class="mb-2">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">💡 사례발표 I</span>
+                                    <span class="session-type session-type-case-study"><span class="sr-only">유형: </span>💡 사례발표 I</span>
                                     <span class="font-semibold text-gray-800">연세대학교 성과관리체계 구축 + AI활용 사례</span>
                                 </p>
                                 <em class="text-gray-600">- 연세대학교 기획실 성과분석팀 이경민 팀장</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🔧 신기술동향 I</span>
+                                    <span class="session-type session-type-new-tech"><span class="sr-only">유형: </span>🔧 신기술동향 I</span>
                                     <span class="font-semibold text-gray-800">사용자 기반 지능형 통합학술정보플랫폼 소개</span>
                                 </p>
                                 <em class="text-gray-600">- 주 아이네크 여재구 차장</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">📈 사례발표 II</span>
+                                    <span class="session-type session-type-case-study"><span class="sr-only">유형: </span>📈 사례발표 II</span>
                                     <span class="font-semibold text-gray-800">데이터 리터러시 역량 강화를 위한 '숭실(SSU)데이터톤' 운영사례</span>
                                 </p>
                                 <em class="text-gray-600">- 숭실대학교 중앙도서관 최현진 사서</em>
@@ -430,13 +714,13 @@
                         <div class="schedule-item">
                             <div class="schedule-time">18:10-18:40</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">☕ Coffee Break & 체크인</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>☕ Coffee Break & 체크인</span>
                             </div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">18:40-21:00</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🍽️ 만찬</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>🍽️ 만찬</span>
                             </div>
                         </div>
                     </div>
@@ -449,12 +733,12 @@
                             <div class="schedule-time">09:30-10:40</div>
                             <div class="schedule-content">
                                 <p class="mb-2">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🏆 우수논문</span>
+                                    <span class="session-type session-type-case-study"><span class="sr-only">유형: </span>🏆 우수논문</span>
                                     <span class="font-semibold text-gray-800">K-첨단분야 디지털 컬렉션 구축</span>
                                 </p>
                                 <em class="text-gray-600">- &lt;제15회 사대도협 논문, 우수사례 및 혁신 아이디어 공모 '우수사례' 당선작 발표&gt; 영남대학교 중앙도서관 문정순 팀장</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">💾 신기술동향 II</span>
+                                    <span class="session-type session-type-new-tech"><span class="sr-only">유형: </span>💾 신기술동향 II</span>
                                     <span class="font-semibold text-gray-800">데이터의 서재 : 도서관을 통한 공공데이터 스마트 AI검색 플랫폼</span>
                                 </p>
                                 <em class="text-gray-600">- ㈜리버트리 대표 유제승</em>
@@ -463,19 +747,19 @@
                         <div class="schedule-item">
                             <div class="schedule-time">10:40-11:10</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">☕ Coffee Break & 이벤트</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>☕ Coffee Break & 이벤트</span>
                             </div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">11:10-12:40</div>
                             <div class="schedule-content">
                                 <p class="mb-2">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🏛️ 특강 II</span>
+                                    <span class="session-type session-type-special-lecture"><span class="sr-only">유형: </span>🏛️ 특강 II</span>
                                     <span class="font-semibold text-gray-800">고고학이 바라본 도서관의 역사, 그리고 지식의 미래</span>
                                 </p>
                                 <em class="text-gray-600">- 경희대학교 사학과 강인욱 교수 / 도서관장</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🌿 신기술동향 III</span>
+                                    <span class="session-type session-type-new-tech"><span class="sr-only">유형: </span>🌿 신기술동향 III</span>
                                     <span class="font-semibold text-gray-800">도서관 실내환경과 개선방안</span>
                                 </p>
                                 <em class="text-gray-600">- ㈜크린바이오 대표이사 김해중</em>
@@ -484,19 +768,19 @@
                         <div class="schedule-item">
                             <div class="schedule-time">12:40-14:00</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🍝 점심 식사</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>🍝 점심 식사</span>
                             </div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">14:00-15:20</div>
                             <div class="schedule-content">
                                 <p class="mb-2">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🌐 이슈 II</span>
+                                    <span class="session-type session-type-issue"><span class="sr-only">유형: </span>🌐 이슈 II</span>
                                     <span class="font-semibold text-gray-800">The Evolving Publishing Landscape: Open Access and Beyond</span>
                                 </p>
                                 <em class="text-gray-600">- 스테판 토체프, MDPI CEO</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">✨ 신기술동향 IV</span>
+                                    <span class="session-type session-type-new-tech"><span class="sr-only">유형: </span>✨ 신기술동향 IV</span>
                                     <span class="font-semibold text-gray-800">Inside MDPI: Our Journey, Editorial Practices & Global Collaboration</span>
                                 </p>
                                 <em class="text-gray-600">- 줄리아 스테페넬리, MDPI 과학전문위원회 총괄팀장</em>
@@ -505,29 +789,29 @@
                         <div class="schedule-item">
                             <div class="schedule-time">15:20-15:50</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">☕ Coffee Break & 전시</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>☕ Coffee Break & 전시</span>
                             </div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">15:50-17:50</div>
                             <div class="schedule-content">
                                 <p class="mb-2">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">💻 사례발표 III</span>
+                                    <span class="session-type session-type-case-study"><span class="sr-only">유형: </span>💻 사례발표 III</span>
                                     <span class="font-semibold text-gray-800">한양대학교 신규 교외접속 솔루션, &lt;OpenAthens&gt; 구축 경험 공유</span>
                                 </p>
                                 <em class="text-gray-600">- 한양대 백남학술정보관 이상은 사서</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">💡 신기술동향 V</span>
+                                    <span class="session-type session-type-new-tech"><span class="sr-only">유형: </span>💡 신기술동향 V</span>
                                     <span class="font-semibold text-gray-800">Academic AI 기반의 ProQuest Research Assistant</span>
                                 </p>
                                 <em class="text-gray-600">- 박지윤, Clarivate Product Sales Manager</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">📚 신기술동향 VI</span>
+                                    <span class="session-type session-type-new-tech"><span class="sr-only">유형: </span>📚 신기술동향 VI</span>
                                     <span class="font-semibold text-gray-800">De Gruyter Brill: Your Partner to Research Excellence</span>
                                 </p>
                                 <em class="text-gray-600">- Peng Guo, De Gruyter Brill Senior Sales Manager</em>
                                 <p class="mb-2 mt-4">
-                                    <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🔄 사례발표 IV</span>
+                                    <span class="session-type session-type-case-study"><span class="sr-only">유형: </span>🔄 사례발표 IV</span>
                                     <span class="font-semibold text-gray-800">대학도서관 리모델링과 장서 폐기: 공간 확보를 위한 선택과 조정</span>
                                 </p>
                                 <em class="text-gray-600">- 울산대학교 중앙도서관 김초롱 부장</em>
@@ -536,13 +820,13 @@
                         <div class="schedule-item">
                             <div class="schedule-time">17:50-18:10</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">😴 휴식</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>😴 휴식</span>
                             </div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">18:10-21:00</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🥳 만찬</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>🥳 만찬</span>
                             </div>
                         </div>
                     </div>
@@ -554,13 +838,13 @@
                         <div class="schedule-item">
                             <div class="schedule-time">09:00-09:30</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🎤 주제 토론과 총평</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>🎤 주제 토론과 총평</span>
                             </div>
                         </div>
                         <div class="schedule-item">
                             <div class="schedule-time">09:30-09:40</div>
                             <div class="schedule-content">
-                                <span class="inline-flex items-center bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1.5 rounded-full shadow-sm mr-2">🎁 폐회식</span>
+                                <span class="session-type session-type-general"><span class="sr-only">유형: </span>🎁 폐회식</span>
                             </div>
                         </div>
                     </div>
@@ -569,6 +853,7 @@
         </div>
     </section>
 
+    <!-- 네트워킹 코스 -->
     <section class="py-16 bg-blue-700 text-white" id="networking-course-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center text-white">
@@ -583,8 +868,8 @@
 
             <div class="course-selector">
                 <div class="course-tabs flex flex-wrap justify-center gap-4 mb-8">
-                    <button class="course-tab active" data-course="west">🌴 1안: 서부 코스 (환상숲 & 노형수퍼마켙)</button>
-                    <button class="course-tab" data-course="east">🗿 2안: 동부 코스 (돌문화공원 & 함덕해수욕장)</button>
+                    <button class="course-tab active" data-course="west">🌴 1안: 서부 코스 (환상숲 & 노형수퍼마켙)<span class="sr-only"> 선택하기</span></button>
+                    <button class="course-tab" data-course="east">🗿 2안: 동부 코스 (돌문화공원 & 함덕해수욕장)<span class="sr-only"> 선택하기</span></button>
                 </div>
 
                 <div id="course-west" class="course-content active p-6">
@@ -601,9 +886,9 @@
                                 시원한 원시림 속 힐링 족욕체험으로 워크숍의 피로를 풀어보세요.
                             </p>
                             <div class="feature-list mt-5 text-gray-700">
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 주요 활동: 숲 트레킹, 족욕체험, 숲 해설</p>
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 특징: 여름에도 시원한 원시림, 부담 없는 산책길</p>
-                                <p class="flex items-center"><span class="text-blue-500 mr-2">✔️</span> 준비물: 여분의 양말 (족욕 후)</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 주요 활동: 숲 트레킹, 족욕체험, 숲 해설</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 특징: 여름에도 시원한 원시림, 부담 없는 산책길</p>
+                                <p class="flex items-center"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 준비물: 여분의 양말 (족욕 후)</p>
                             </div>
                             <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
                                 <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
@@ -618,9 +903,9 @@
                                 내부에 카페가 있어 커피 한 잔과 함께 몰입감 있는 미디어아트를 감상할 수 있습니다.
                             </p>
                             <div class="feature-list mt-5 text-gray-700">
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 관람 형식: 원형극장 미디어아트</p>
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 편의시설: 내부 카페</p>
-                                <p class="flex items-center"><span class="text-blue-500 mr-2">✔️</span> 위치: 공항에서 멀지 않은 노형동</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 관람 형식: 원형극장 미디어아트</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 편의시설: 내부 카페</p>
+                                <p class="flex items-center"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 위치: 공항에서 멀지 않은 노형동</p>
                             </div>
                             <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
                                 <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
@@ -644,9 +929,9 @@
                                 거대한 석상, 화산암석 전시, 미술 갤러리 등 실내외 다양한 볼거리가 있습니다.
                             </p>
                             <div class="feature-list mt-5 text-gray-700">
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 주요 전시: 제주형성전시관, 수석전시관, 돌갤러리, 오백장군갤러리</p>
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 포토스팟: '하늘연못' (물 위를 걷는 듯한 사진 연출)</p>
-                                <p class="flex items-center"><span class="text-blue-500 mr-2">✔️</span> 편의시설: 양산 비치, 전동차 운행</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 주요 전시: 제주형성전시관, 수석전시관, 돌갤러리, 오백장군갤러리</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 포토스팟: '하늘연못' (물 위를 걷는 듯한 사진 연출)</p>
+                                <p class="flex items-center"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 편의시설: 양산 비치, 전동차 운행</p>
                             </div>
                             <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
                                 <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
@@ -661,9 +946,9 @@
                                 오션뷰 카페에서 휴식을 취해보세요. 서우봉 둘레길에서는 바다 전경을 한눈에 담을 수 있습니다.
                             </p>
                             <div class="feature-list mt-5 text-gray-700">
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 주요 활동: 해변 산책, 카페 휴식, 서우봉 트레킹</p>
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2">✔️</span> 특징: 제주 올레 19코스 포함, 7월 해바라기 개화</p>
-                                <p class="flex items-center"><span class="text-blue-500 mr-2">✔️</span> 미식/쇼핑: 소품샵, 오션뷰 카페</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 주요 활동: 해변 산책, 카페 휴식, 서우봉 트레킹</p>
+                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 특징: 제주 올레 19코스 포함, 7월 해바라기 개화</p>
+                                <p class="flex items-center"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 미식/쇼핑: 소품샵, 오션뷰 카페</p>
                             </div>
                             <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
                                 <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
@@ -715,6 +1000,7 @@
         </div>
     </section>
 
+    <!-- 오시는 길 -->
     <section class="py-16 bg-gray-50" id="directions-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">📍 오시는 길</h2>
@@ -728,19 +1014,20 @@
         </div>
     </section>
 
+    <!-- 문의하기 -->
     <section class="py-16 bg-white" id="contact-section">
         <div class="container mx-auto px-4">
             <h2 class="section-title text-3xl font-bold mb-10 text-center">📧 문의하기</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div class="contact-info p-8 rounded-xl shadow-lg bg-gray-50">
                     <p class="flex items-center text-lg mb-4 text-gray-700">
-                        <span class="icon text-blue-600">📞</span> 전화: 054-279-2891
+                        <span class="icon text-blue-600" aria-hidden="true">📞</span> 전화: 054-279-2891
                     </p>
                     <p class="flex items-center text-lg mb-4 text-gray-700">
-                        <span class="icon text-blue-600">✉️</span> 이메일: kapul-2025@postech.ac.kr
+                        <span class="icon text-blue-600" aria-hidden="true">✉️</span> 이메일: kapul-2025@postech.ac.kr
                     </p>
                     <p class="flex items-center text-lg text-gray-700">
-                        <span class="icon text-blue-600">⏰</span> 운영 시간: 평일 09:00 - 18:00
+                        <span class="icon text-blue-600" aria-hidden="true">⏰</span> 운영 시간: 평일 09:00 - 18:00
                     </p>
                 </div>
                 <div class="p-8 rounded-xl shadow-lg bg-gray-50">
@@ -756,6 +1043,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8 text-center rounded-t-lg">
         <div class="container mx-auto px-4">
             <p class="mb-2">&copy; 2025 한국사립대학교도서관협의회. All rights reserved.</p>
@@ -763,7 +1051,8 @@
         </div>
     </footer>
 
-    <a href="#" id="backToTopBtn">TOP</a>
+    <!-- Back to Top Button -->
+    <a href="#" id="backToTopBtn">TOP<span class="sr-only"> 페이지 상단으로 이동</span></a>
 
     <script>
         // 스크롤 애니메이션 (데스크톱에서만) - Tailwind CSS를 사용하여 애니메이션 대체 가능
@@ -781,6 +1070,8 @@
             if (window.innerWidth <= 768) {
                 document.querySelector('.hero').style.transform = 'none';
             }
+            updateProgressBar(); // Update progress bar on resize
+            highlightNavLink(); // Update active navbar link on resize
         });
 
         // 네트워킹 코스 탭 기능
@@ -833,15 +1124,28 @@
                 });
             });
 
+            // Progress Bar Logic
+            function updateProgressBar() {
+                const scrollableHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = document.documentElement.scrollTop;
+                const progress = (scrolled / scrollableHeight) * 100;
+                document.getElementById('progressBar').style.width = `${progress}%`;
+            }
+
+            window.addEventListener('scroll', updateProgressBar);
+            updateProgressBar(); // Initial call to set progress bar on load
+
             // Highlight active navbar link on scroll
             const sections = document.querySelectorAll('section[id]');
             const navLinks = document.querySelectorAll('.navbar-link');
+            const navbarHeight = document.querySelector('.navbar').offsetHeight;
 
             function highlightNavLink() {
                 let current = '';
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop - document.querySelector('.navbar').offsetHeight; // Adjust for sticky header
+                    const sectionTop = section.offsetTop - navbarHeight; // Adjust for sticky header
                     const sectionHeight = section.clientHeight;
+                    // Check if the top of the section is visible or partially visible in the viewport
                     if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
                         current = section.getAttribute('id');
                     }
@@ -849,6 +1153,7 @@
 
                 navLinks.forEach(link => {
                     link.classList.remove('active');
+                    // Check if the link's href matches the current section ID
                     if (link.href.includes(current)) {
                         link.classList.add('active');
                     }
@@ -856,8 +1161,7 @@
             }
 
             window.addEventListener('scroll', highlightNavLink);
-            // Also call on load to set initial active link if page is not at top
-            highlightNavLink();
+            highlightNavLink(); // Initial call to set active link on load
         });
     </script>
 </body>
