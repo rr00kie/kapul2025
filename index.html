@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
@@ -11,14 +11,17 @@
         body {
             font-family: 'Inter', sans-serif;
             color: #333;
-            background: linear-gradient(to bottom right, #f8f9fa, #e2e8f0); /* Subtle light gradient */
+            /* Subtle light gradient, adjusted to new theme */
+            background: linear-gradient(to bottom right, #fef2f2, #ffe4e6);
             transition: background-color 0.4s ease, color 0.4s ease;
         }
         section.bg-white {
-            background: linear-gradient(to top left, #ffffff, #f0f4f8);
+            /* Adjusted to new theme */
+            background: linear-gradient(to top left, #ffffff, #fffafa);
         }
         section.bg-gray-50 {
-            background: linear-gradient(to bottom right, #f8f9fa, #f1f5f9);
+            /* Adjusted to new theme */
+            background: linear-gradient(to bottom right, #fef2f2, #fff0f3);
         }
 
         /* Progress bar */
@@ -27,7 +30,7 @@
             top: 0;
             left: 0;
             height: 4px; /* Increased height for visibility */
-            background-color: #3b82f6; /* Blue-600 */
+            background-color: #D32F2F; /* Primary theme color */
             z-index: 9999;
             width: 0%; /* Initial width */
             transition: width 0.1s linear; /* Smooth fill */
@@ -80,10 +83,10 @@
             left: 50%;
             bottom: 0;
             transform: translateX(-50%);
+            background-color: #EF5350; /* Brighter accent for title underline */
+            border-radius: 2px;
             width: 80px;
             height: 4px;
-            background-color: #60a5fa; /* Tailwind blue-400 */
-            border-radius: 2px;
         }
 
         /* Cards and interactive elements */
@@ -102,7 +105,8 @@
 
         /* Schedule Timeline Design */
         .schedule-day h3 {
-            background: linear-gradient(135deg, #60a5fa, #3b82f6); /* Blue gradient */
+            /* Adjusted to new theme */
+            background: linear-gradient(135deg, #EF5350, #D32F2F); /* Red gradient */
             color: white;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
@@ -113,7 +117,7 @@
         .schedule-item {
             display: flex;
             padding: 1rem;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #ffe4e6; /* Adjusted border color */
             align-items: flex-start;
             position: relative; /* For timeline line and circle */
             padding-left: 40px; /* Space for timeline elements */
@@ -130,7 +134,7 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background-color: #cbd5e1; /* Light gray line */
+            background-color: #e2e8f0; /* Light gray line (kept for contrast) */
             z-index: 1;
         }
         /* Timeline Circle */
@@ -142,9 +146,9 @@
             width: 18px;
             height: 18px;
             border-radius: 50%;
-            background-color: #3b82f6; /* Blue circle */
+            background-color: #D32F2F; /* Primary theme color */
             border: 3px solid #ffffff; /* White border */
-            box-shadow: 0 0 0 2px #3b82f6; /* Outer blue glow */
+            box-shadow: 0 0 0 2px #D32F2F; /* Outer glow */
             z-index: 2;
         }
         /* Adjust for first/last item circles to not extend line */
@@ -154,7 +158,7 @@
 
         .schedule-time {
             font-weight: 600;
-            color: #1d4ed8; /* Darker blue */
+            color: #B71C1C; /* Darker theme color */
             min-width: 100px;
             margin-right: 1rem;
             flex-shrink: 0; /* Prevent shrinking */
@@ -162,7 +166,7 @@
             z-index: 3;
         }
 
-        /* Session Type Color Coding */
+        /* Session Type Color Coding (Adjusted for new theme) */
         .session-type {
             display: inline-flex;
             align-items: center;
@@ -175,29 +179,29 @@
             white-space: nowrap; /* Prevent wrapping */
         }
         .session-type-general {
-            background-color: #bfdbfe; /* blue-200 */
-            color: #1e40af; /* blue-800 */
+            background-color: #FFCDD2; /* Light pink */
+            color: #B71C1C; /* Dark red */
         }
         .session-type-special-lecture {
-            background-color: #fce7f3; /* pink-100 */
-            color: #9d174d; /* pink-800 */
+            background-color: #F8BBD0; /* Pinkish red */
+            color: #880E4F; /* Darker pink */
         }
         .session-type-issue {
-            background-color: #e0f2fe; /* lightblue-100 */
-            color: #0369a1; /* lightblue-800 */
+            background-color: #E1BEE7; /* Light purple */
+            color: #4A148C; /* Dark purple */
         }
         .session-type-case-study {
-            background-color: #dcfce7; /* green-100 */
-            color: #166534; /* green-800 */
+            background-color: #FFE0B2; /* Light orange */
+            color: #E65100; /* Dark orange */
         }
         .session-type-new-tech {
-            background-color: #e9d5ff; /* purple-100 */
-            color: #6b21a8; /* purple-800 */
+            background-color: #D1C4E9; /* Light indigo */
+            color: #311B92; /* Dark indigo */
         }
 
 
         .course-tab {
-            background-color: #cbd5e1; /* Tailwind slate-300 */
+            background-color: #efefef; /* Slightly darker neutral for tabs */
             color: #333;
             padding: 12px 25px;
             border-radius: 25px;
@@ -209,7 +213,7 @@
             justify-content: center;
         }
         .course-tab.active, .course-tab:hover {
-            background-color: #60a5fa; /* Tailwind blue-400 */
+            background-color: #D32F2F; /* Primary theme color */
             color: white;
             transform: translateY(-3px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -225,20 +229,20 @@
         .comparison-table th, .comparison-table td {
             padding: 1rem;
             text-align: center;
-            border-bottom: 1px solid #e2e8f0;
+            border-bottom: 1px solid #ffe4e6; /* Adjusted border color */
         }
         .comparison-table th {
-            background-color: #f1f5f9; /* Tailwind slate-100 */
+            background-color: #fef2f2; /* Light background for table headers */
             font-weight: 600;
             color: #2c3e50;
         }
         /* New styles for improved readability in comparison table */
         .comparison-table tr:nth-child(odd) td {
-            background-color: #fcfdfe; /* Very light background for odd rows */
+            background-color: #fffafa; /* Very light background for odd rows */
             color: #333; /* Darker text for better contrast */
         }
         .comparison-table tr:nth-child(even) td {
-            background-color: #e2e8f0; /* Light gray for even rows */
+            background-color: #ffe4e6; /* Light theme color for even rows */
             color: #222; /* Even darker text for contrast */
         }
         .comparison-table tr:last-child td {
@@ -257,10 +261,10 @@
             position: relative; /* Needed for absolute positioning of image */
             height: 0; /* Important for aspect ratio padding trick */
             padding-bottom: calc(614 / 906 * 100%); /* Maintain aspect ratio (height / width * 100%) */
-            background-color: #e2e8f0; /* Fallback background color */
+            background-color: #ffe4e6; /* Fallback background color */
         }
         .contact-info .icon {
-            color: #60a5fa; /* Tailwind blue-400 */
+            color: #EF5350; /* Brighter accent for icons */
             font-size: 1.8rem;
             margin-right: 15px;
         }
@@ -279,7 +283,7 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #3b82f6; /* Blue-600 */
+            background-color: #D32F2F; /* Primary theme color */
             color: white;
             padding: 12px 18px;
             border-radius: 50%;
@@ -303,7 +307,7 @@
             transform: translateY(0);
         }
         #backToTopBtn:hover {
-            background-color: #2563eb; /* Blue-700 */
+            background-color: #B71C1C; /* Darker theme color on hover */
             transform: scale(1.1);
         }
 
@@ -324,7 +328,7 @@
             align-items: center;
         }
         .navbar-link {
-            color: #3b82f6; /* Blue-600 */
+            color: #D32F2F; /* Primary theme color */
             font-weight: 600;
             padding: 0.75rem 1.25rem;
             border-radius: 9999px; /* Fully rounded pills */
@@ -334,12 +338,12 @@
             white-space: nowrap; /* Prevent wrapping */
         }
         .navbar-link:hover {
-            background-color: #e0f2fe; /* Light blue on hover */
-            color: #1d4ed8; /* Darker blue on hover */
+            background-color: #FFCDD2; /* Light theme color on hover */
+            color: #B71C1C; /* Darker theme color on hover */
         }
         /* Active state for current section */
         .navbar-link.active {
-            background-color: #3b82f6;
+            background-color: #D32F2F; /* Primary theme color */
             color: white;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
@@ -347,130 +351,134 @@
         /* Dark Mode */
         @media (prefers-color-scheme: dark) {
             body {
-                background: linear-gradient(to bottom right, #1a202c, #2d3748);
-                color: #e2e8f0;
+                /* Adjusted to new dark theme */
+                background: linear-gradient(to bottom right, #2a0000, #3e0000);
+                color: #fcebeb; /* Lighter text for dark mode */
             }
             section.bg-white {
-                background: linear-gradient(to top left, #2d3748, #222d3a);
+                /* Adjusted to new dark theme */
+                background: linear-gradient(to top left, #3e0000, #330000);
             }
             section.bg-gray-50 {
-                background: linear-gradient(to bottom right, #2d3748, #3a475a);
+                /* Adjusted to new dark theme */
+                background: linear-gradient(to bottom right, #3e0000, #4c0000);
             }
             .section-title {
-                color: #e2e8f0;
+                color: #fcebeb;
             }
             .section-title::after {
-                background-color: #90cdf4;
+                background-color: #FF8A80; /* Bright accent in dark mode */
             }
 
             /* Dark mode for cards and elements */
             .info-card, .schedule-day, .attraction-card, .course-header, .booking-notice {
-                background-color: #2d3748;
+                background-color: #3e0000;
                 box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
-                border-color: #4a5568;
+                border-color: #5c0000;
             }
             .schedule-day h3 {
-                background: linear-gradient(135deg, #4299e1, #3182ce);
+                /* Adjusted to new dark theme */
+                background: linear-gradient(135deg, #EF5350, #D32F2F);
                 color: white;
             }
             .schedule-item {
-                border-bottom-color: #4a5568;
+                border-bottom-color: #5c0000;
             }
             .schedule-item::before {
-                background-color: #4a5568;
+                background-color: #5c0000;
             }
             .schedule-item::after {
-                background-color: #4299e1;
-                border-color: #2d3748;
-                box-shadow: 0 0 0 2px #4299e1;
+                background-color: #D32F2F;
+                border-color: #3e0000;
+                box-shadow: 0 0 0 2px #D32F2F;
             }
             .schedule-time {
-                color: #63b3ed;
+                color: #EF5350; /* Lighter red for time */
             }
 
             /* Dark mode for session types */
             .session-type-general {
-                background-color: #2a4365; /* blue-900 */
-                color: #90cdf4; /* blue-300 */
+                background-color: #4A148C; /* Dark purple */
+                color: #E1BEE7; /* Light purple */
             }
             .session-type-special-lecture {
-                background-color: #4a1c31; /* pink-900 */
-                color: #f6adca; /* pink-300 */
+                background-color: #880E4F; /* Darker pink */
+                color: #F8BBD0; /* Light pink */
             }
             .session-type-issue {
-                background-color: #0c4a6e; /* lightblue-900 */
-                color: #93c5fd; /* lightblue-300 */
+                background-color: #311B92; /* Dark indigo */
+                color: #D1C4E9; /* Light indigo */
             }
             .session-type-case-study {
-                background-color: #1c4532; /* green-900 */
-                color: #68d391; /* green-300 */
+                background-color: #E65100; /* Dark orange */
+                color: #FFE0B2; /* Light orange */
             }
             .session-type-new-tech {
-                background-color: #3b1759; /* purple-900 */
-                color: #b794f4; /* purple-300 */
+                background-color: #B71C1C; /* Dark red */
+                color: #FFCDD2; /* Light red */
             }
 
             .text-gray-500, .text-gray-600, .text-gray-700, .text-gray-800 {
-                color: #cbd5e1; /* Lighter gray for dark mode text */
+                color: #fcebeb; /* Lighter text for dark mode */
             }
             .attraction-card, .contact-info, .booking-notice {
-                background-color: #2d3748;
-                border-color: #4a5568;
+                background-color: #3e0000;
+                border-color: #5c0000;
             }
             .attraction-image { /* Ensure emojis stay visible */
                 filter: brightness(0.8) contrast(1.2);
             }
             .attraction-card h4 {
-                color: #f6e05e; /* Yellow-300 for titles */
+                color: #FFEB3B; /* Yellow for titles (stands out) */
             }
             .tip-box {
-                background-color: #2a4365;
-                border-color: #2c5282;
-                color: #e0f2fe;
+                background-color: #5c0000;
+                border-color: #7B1FA2; /* Purple border for tips */
+                color: #fcebeb;
             }
             .tip-box p {
-                color: #90cdf4;
+                color: #FFCDD2; /* Light red for tip text */
             }
             .course-tab {
-                background-color: #4a5568;
-                color: #e2e8f0;
+                background-color: #5c0000;
+                color: #fcebeb;
             }
             .course-tab.active, .course-tab:hover {
-                background-color: #4299e1;
+                background-color: #D32F2F;
                 color: white;
             }
             .course-header {
-                background-color: #2d3748;
+                background-color: #3e0000;
             }
             .course-header h3 {
                 color: white;
             }
             .course-header p {
-                color: #a0aec0;
+                color: #fcebeb;
             }
             .comparison-table th {
-                background-color: #4a5568;
-                color: #e2e8f0;
+                background-color: #5c0000;
+                color: #fcebeb;
             }
             .comparison-table tr:nth-child(odd) td {
-                background-color: #2d3748;
-                color: #e2e8f0;
+                background-color: #3e0000;
+                color: #fcebeb;
             }
             .comparison-table tr:nth-child(even) td {
-                background-color: #4a5568;
-                color: #e2e8f0;
+                background-color: #5c0000;
+                color: #fcebeb;
             }
             .comparison-table td:first-child {
-                color: #a0aec0;
+                color: #fcebeb;
             }
             .map-placeholder {
-                background-color: #4a5568;
+                background-color: #5c0000;
             }
             .contact-info .icon {
-                color: #90cdf4;
+                color: #FF8A80;
             }
             footer {
-                background-color: #1a202c;
+                background-color: #2a0000;
             }
         }
 
@@ -591,7 +599,7 @@
 </head>
 <body>
     <!-- Scroll Progress Bar -->
-    <div id="progressBar" class="fixed top-0 left-0 h-1 bg-blue-500 z-[9999]"></div>
+    <div id="progressBar" class="fixed top-0 left-0 h-1 bg-red-500 z-[9999]"></div>
 
     <!-- Navbar (Sticky Header) -->
     <nav class="navbar">
@@ -600,7 +608,8 @@
             <a href="#program-section" class="navbar-link">📋 프로그램 일정<span class="sr-only"> 섹션으로 이동</span></a>
             <a href="#networking-course-section" class="navbar-link">🤝 네트워킹 코스<span class="sr-only"> 섹션으로 이동</span></a>
             <a href="#directions-section" class="navbar-link">📍 오시는 길<span class="sr-only"> 섹션으로 이동</span></a>
-            <a href="#contact-section" class="navbar-link">📧 문의하기<span class="sr-only"> 섹션으로 이동</span></a>
+            <!-- 자유게시판 메뉴로 변경 및 링크 업데이트 -->
+            <a href="https://padlet.com/kapul2025/2025-oxsfm45emy5e9sux" class="navbar-link">📝 자유게시판<span class="sr-only"> 자유게시판으로 이동</span></a>
         </div>
     </nav>
 
@@ -612,8 +621,9 @@
                 <span class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-white leading-tight block">제38차 실무자 워크숍</span>
             </h1>
             <p class="theme text-2xl sm:text-3xl font-semibold text-yellow-300 mb-8 leading-relaxed">🔥 지식의 용광로, 열정과 혁신으로 빚은 대학도서관</p>
-            <a href="https://kapul.or.kr/217" class="inline-block bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
-                📝 참가신청 바로가기
+            <!-- 프로그램 일정 바로가기 버튼 -->
+            <a href="#program-section" class="inline-block bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                📋 프로그램 일정 바로가기
             </a>
         </div>
     </section>
@@ -624,22 +634,22 @@
             <h2 class="section-title text-3xl font-bold mb-10 text-center">🌟 행사 개요</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="info-card p-6 text-center">
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3">📅 일시</h3>
+                    <h3 class="text-xl font-semibold text-red-600 mb-3">📅 일시</h3>
                     <p class="text-gray-700 font-medium text-lg"><strong>2025년 7월 2일(수) ~ 7월 4일(금)</strong></p>
                     <p class="text-gray-500 text-sm">2박 3일간의 알찬 프로그램</p>
                 </div>
                 <div class="info-card p-6 text-center">
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3">🏖️ 장소</h3>
+                    <h3 class="text-xl font-semibold text-red-600 mb-3">🏖️ 장소</h3>
                     <p class="text-gray-700 font-medium text-lg"><strong>서귀포 KAL호텔</strong></p>
                     <p class="text-gray-500 text-sm">📍 서귀포시 칠십리로 242</p>
                 </div>
                 <div class="info-card p-6 text-center">
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3">👥 참가대상</h3>
+                    <h3 class="text-xl font-semibold text-red-600 mb-3">👥 참가대상</h3>
                     <p class="text-gray-700 font-medium text-lg"><strong>회원관 실무자</strong></p>
                     <p class="text-500 text-sm">대학도서관 운영 전문가들의 네트워킹</p>
                 </div>
                 <div class="info-card p-6 text-center">
-                    <h3 class="text-xl font-semibold text-blue-600 mb-3">💰 참가비</h3>
+                    <h3 class="text-xl font-semibold text-red-600 mb-3">💰 참가비</h3>
                     <p class="text-gray-700 font-medium text-lg"><strong>400,000원</strong></p>
                     <p class="text-gray-500 text-sm">2인 1실, 강사료, 교재비 포함</p>
                 </div>
@@ -873,9 +883,9 @@
                 </div>
 
                 <div id="course-west" class="course-content active p-6">
-                    <div class="course-header mb-8 text-center bg-blue-600 p-8 rounded-xl shadow-lg">
+                    <div class="course-header mb-8 text-center bg-red-600 p-8 rounded-xl shadow-lg">
                         <h3 class="text-3xl font-bold text-white mb-4">1안: 서부 코스 (환상숲 & 노형수퍼마켙)</h3>
-                        <p class="text-lg text-blue-100">제주 서쪽의 아름다운 자연경관과 독특한 문화를 체험합니다.</p>
+                        <p class="text-lg text-red-100">제주 서쪽의 아름다운 자연경관과 독특한 문화를 체험합니다.</p>
                     </div>
                     <div class="attraction-grid grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="attraction-card p-6 bg-white text-gray-800 rounded-xl shadow-lg border border-gray-200">
@@ -886,13 +896,13 @@
                                 시원한 원시림 속 힐링 족욕체험으로 워크숍의 피로를 풀어보세요.
                             </p>
                             <div class="feature-list mt-5 text-gray-700">
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 주요 활동: 숲 트레킹, 족욕체험, 숲 해설</p>
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 특징: 여름에도 시원한 원시림, 부담 없는 산책길</p>
-                                <p class="flex items-center"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 준비물: 여분의 양말 (족욕 후)</p>
+                                <p class="flex items-center mb-2"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 주요 활동: 숲 트레킹, 족욕, 숲 해설</p>
+                                <p class="flex items-center mb-2"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 특징: 여름에도 시원한 원시림, 부담 없는 산책길</p>
+                                <p class="flex items-center"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 준비물: 여분의 양말 (족욕 후)</p>
                             </div>
-                            <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
-                                <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
-                                <p class="text-blue-600">따뜻한 차와 함께하는 족욕으로 몸과 마음을 편안하게 만드세요!</p>
+                            <div class="tip-box bg-red-50 border border-red-200 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-red-700 mb-1">💡 팁:</p>
+                                <p class="text-red-600">따뜻한 차와 함께하는 족욕으로 몸과 마음을 편안하게 만드세요!</p>
                             </div>
                         </div>
                         <div class="attraction-card p-6 bg-white text-gray-800 rounded-xl shadow-lg border border-gray-200">
@@ -903,22 +913,22 @@
                                 내부에 카페가 있어 커피 한 잔과 함께 몰입감 있는 미디어아트를 감상할 수 있습니다.
                             </p>
                             <div class="feature-list mt-5 text-gray-700">
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 관람 형식: 원형극장 미디어아트</p>
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 편의시설: 내부 카페</p>
-                                <p class="flex items-center"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 위치: 공항에서 멀지 않은 노형동</p>
+                                <p class="flex items-center mb-2"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 관람 형식: 원형극장 미디어아트</p>
+                                <p class="flex items-center mb-2"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 편의시설: 내부 카페</p>
+                                <p class="flex items-center"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 위치: 공항에서 멀지 않은 노형동</p>
                             </div>
-                            <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
-                                <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
-                                <p class="text-blue-600">컬러풀한 옷을 입으면 더 예쁜 사진을 남길 수 있습니다!</p>
+                            <div class="tip-box bg-red-50 border border-red-200 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-red-700 mb-1">💡 팁:</p>
+                                <p class="text-red-600">컬러풀한 옷을 입으면 더 예쁜 사진을 남길 수 있습니다!</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div id="course-east" class="course-content p-6">
-                    <div class="course-header mb-8 text-center bg-blue-600 p-8 rounded-xl shadow-lg">
+                    <div class="course-header mb-8 text-center bg-red-600 p-8 rounded-xl shadow-lg">
                         <h3 class="text-3xl font-bold text-white mb-4">2안: 동부 코스 (돌문화공원 & 함덕해수욕장)</h3>
-                        <p class="text-lg text-blue-100">제주 동쪽의 유구한 역사와 아름다운 자연을 탐험합니다.</p>
+                        <p class="text-lg text-red-100">제주 동쪽의 유구한 역사와 아름다운 자연을 탐험합니다.</p>
                     </div>
                     <div class="attraction-grid grid grid-cols-1 md:grid-cols-2 gap-8">
                         <div class="attraction-card p-6 bg-white text-gray-800 rounded-xl shadow-lg border border-gray-200">
@@ -929,13 +939,13 @@
                                 거대한 석상, 화산암석 전시, 미술 갤러리 등 실내외 다양한 볼거리가 있습니다.
                             </p>
                             <div class="feature-list mt-5 text-gray-700">
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 주요 전시: 제주형성전시관, 수석전시관, 돌갤러리, 오백장군갤러리</p>
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 포토스팟: '하늘연못' (물 위를 걷는 듯한 사진 연출)</p>
-                                <p class="flex items-center"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 편의시설: 양산 비치, 전동차 운행</p>
+                                <p class="flex items-center mb-2"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 주요 전시: 제주형성전시관, 수석전시관, 돌갤러리, 오백장군갤러리</p>
+                                <p class="flex items-center mb-2"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 포토스팟: '하늘연못' (물 위를 걷는 듯한 사진 연출)</p>
+                                <p class="flex items-center"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 편의시설: 양산 비치, 전동차 운행</p>
                             </div>
-                            <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
-                                <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
-                                <p class="text-blue-600">설문대할망 설화를 미리 찾아보면 더욱 재미있게 즐길 수 있습니다!</p>
+                            <div class="tip-box bg-red-50 border border-red-200 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-red-700 mb-1">💡 팁:</p>
+                                <p class="text-red-600">설문대할망 설화를 미리 찾아보면 더욱 재미있게 즐길 수 있습니다!</p>
                             </div>
                         </div>
                         <div class="attraction-card p-6 bg-white text-gray-800 rounded-xl shadow-lg border border-gray-200">
@@ -946,13 +956,13 @@
                                 오션뷰 카페에서 휴식을 취해보세요. 서우봉 둘레길에서는 바다 전경을 한눈에 담을 수 있습니다.
                             </p>
                             <div class="feature-list mt-5 text-gray-700">
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 주요 활동: 해변 산책, 카페 휴식, 서우봉 트레킹</p>
-                                <p class="flex items-center mb-2"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 특징: 제주 올레 19코스 포함, 7월 해바라기 개화</p>
-                                <p class="flex items-center"><span class="text-blue-500 mr-2" aria-hidden="true">✔️</span> 미식/쇼핑: 소품샵, 오션뷰 카페</p>
+                                <p class="flex items-center mb-2"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 주요 활동: 해변 산책, 카페 휴식, 서우봉 트레킹</p>
+                                <p class="flex items-center mb-2"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 특징: 제주 올레 19코스 포함, 7월 해바라기 개화</p>
+                                <p class="flex items-center"><span class="text-red-500 mr-2" aria-hidden="true">✔️</span> 미식/쇼핑: 소품샵, 오션뷰 카페</p>
                             </div>
-                            <div class="tip-box bg-blue-50 border border-blue-200 text-sm p-4 rounded-lg mt-5">
-                                <p class="font-semibold text-blue-700 mb-1">💡 팁:</p>
-                                <p class="text-blue-600">함덕해변 안쪽에는 예쁜 소품샵들이 많으니 둘러보세요!</p>
+                            <div class="tip-box bg-red-50 border border-red-200 text-sm p-4 rounded-lg mt-5">
+                                <p class="font-semibold text-red-700 mb-1">💡 팁:</p>
+                                <p class="text-red-600">함덕해변 안쪽에는 예쁜 소품샵들이 많으니 둘러보세요!</p>
                             </div>
                         </div>
                     </div>
@@ -990,7 +1000,7 @@
                 <div class="booking-notice bg-white p-8 rounded-xl text-center mt-10 shadow-lg">
                     <h3 class="text-2xl font-bold text-yellow-600 mb-4">📢 코스 선택 및 안내</h3>
                     <p class="text-gray-800 text-lg mb-3">
-                        참가신청 시 <strong class="text-blue-600">희망하는 네트워킹 코스를 선택</strong>해 주세요.
+                        참가신청 시 <strong class="text-red-600">희망하는 네트워킹 코스를 선택</strong>해 주세요.
                     </p>
                     <p class="text-gray-700 text-md">
                         신청이 저조한 코스는 폐지될 수 있습니다. 자세한 내용은 신청 시 안내될 예정입니다.
@@ -1014,31 +1024,19 @@
         </div>
     </section>
 
-    <!-- 문의하기 -->
-    <section class="py-16 bg-white" id="contact-section">
+    <!-- 자유게시판 섹션으로 변경됨 -->
+    <section class="py-16 bg-white text-center" id="contact-section">
         <div class="container mx-auto px-4">
-            <h2 class="section-title text-3xl font-bold mb-10 text-center">📧 문의하기</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div class="contact-info p-8 rounded-xl shadow-lg bg-gray-50">
-                    <p class="flex items-center text-lg mb-4 text-gray-700">
-                        <span class="icon text-blue-600" aria-hidden="true">📞</span> 전화: 054-279-2891
-                    </p>
-                    <p class="flex items-center text-lg mb-4 text-gray-700">
-                        <span class="icon text-blue-600" aria-hidden="true">✉️</span> 이메일: kapul-2025@postech.ac.kr
-                    </p>
-                    <p class="flex items-center text-lg text-gray-700">
-                        <span class="icon text-blue-600" aria-hidden="true">⏰</span> 운영 시간: 평일 09:00 - 18:00
-                    </p>
-                </div>
-                <div class="p-8 rounded-xl shadow-lg bg-gray-50">
-                    <p class="text-lg text-gray-700 leading-relaxed">
-                        워크숍 관련 문의사항이 있으시면 언제든지 위 연락처로 문의해 주시기 바랍니다. <br>
-                        친절하게 답변해 드리겠습니다.
-                    </p>
-                    <p class="text-md text-gray-500 mt-4">
-                        (점심시간 12:00 - 13:00 제외)
-                    </p>
-                </div>
+            <h2 class="section-title text-3xl font-bold mb-10">📝 자유게시판</h2>
+            <div class="max-w-2xl mx-auto p-8 rounded-xl shadow-lg bg-gray-50">
+                <p class="text-lg text-gray-700 leading-relaxed mb-6">
+                    워크숍 관련 궁금한 점이나 자유로운 의견을 남겨주세요. <br>
+                    참가자 여러분의 소중한 의견을 기다립니다.
+                </p>
+                <a href="https://padlet.com/kapul2025/2025-oxsfm45emy5e9sux"
+                   class="inline-block bg-gradient-to-r from-red-500 to-red-700 hover:from-red-600 hover:to-red-800 text-white font-bold py-4 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                    게시판 바로가기
+                </a>
             </div>
         </div>
     </section>
